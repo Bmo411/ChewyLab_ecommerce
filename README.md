@@ -1,45 +1,42 @@
-# 🖤 Rotten Apple - E-commerce de Ropa
-
+🍬 Chewy Lab | E-commerce Platform
 <img width="844" height="632" alt="logosinfondo" src="https://github.com/user-attachments/assets/37b42949-810b-4f34-8cf0-87a6a3af45b2" />
+🧪 El Concepto
+Chewy Lab es una marca nativa digital (DTC) basada en Guadalajara, Jalisco, que redefine el consumo de dulces a granel. Nos especializamos en la curación y preparación de gomitas premium en formatos de 1 kilogramo, combinando técnicas de "alquimia de sabor" (mezclas ácidas, picantes y botánicas) con un empaque de lujo diseñado para la experiencia de unboxing perfecta.
 
+🚀 Características del Proyecto
+Modelo de Negocio: E-commerce 100% enfocado en paquetes de gran volumen (1kg).
 
-**Rotten Apple** es una tienda en línea de ropa urbana y alternativa, enfocada en ofrecer una experiencia moderna, minimalista y visualmente atractiva.  
-Este proyecto busca combinar una **UI limpia**, una **arquitectura escalable** y una **integración fluida del flujo de compra**.
+Curación de Sabores: Preparación artesanal de mezclas exclusivas (Spicy, Sour, Botanical).
 
----
+Identidad Visual: Branding minimalista y premium con empaques tipo Doypack mate y ediciones especiales en madera hexagonal.
 
-## 🛍️ Características principales
+Tech Stack: * Frontend reactivo para una navegación fluida.
 
-- 🧥 Catálogo dinámico de productos (camisetas, sudaderas, accesorios, etc.)
-- 🛒 Carrito de compras persistente
-- 👤 Sistema de autenticación (registro, login, logout)
-- 📦 Panel de administración para productos y pedidos
-- 🔍 Filtros, búsqueda y ordenamiento
-- 🌙 Diseño responsive
-- 🧠 Backend modular con API REST
+Pasarela de pagos integrada para transacciones seguras.
 
----
+Optimización de imágenes para resaltar la textura del producto (Hero Section).
 
-## ⚙️ Tecnologías utilizadas
+🛠 Instalación y Desarrollo
+Si deseas clonar este repositorio para fines de desarrollo o pruebas:
 
-**Frontend**
-- css + bootstrap
+Bash
 
-**Backend**
-- Node.js 
-- MongoDB   
-- JWT para autenticación  
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/chewy-lab.git
 
-**Extras**
-- Render(deploy)
+# Instalar dependencias
+npm install
 
----
+# Iniciar servidor de desarrollo
+npm run dev
+📦 Estrategia de Empaque (The Lab Box)
+El repositorio incluye los assets de diseño para los tres niveles de empaque:
 
-## 🚀 Instalación y uso local
+Primary: Doypack negro mate con ventana frontal.
 
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/tu-usuario/rotten-apple.git
-   cd RottenApple
-   npm install
-   mpm start
+Secondary: Caja de envío con branding interno.
+
+Special Edition: Caja de madera hexagonal con logo pirograbado (quemado).
+
+📍 Ubicación y Distribución
+Operaciones centradas en Guadalajara, Jalisco, aprovechando la infraestructura logística y la tradición dulcera de la región para garantizar frescura y rapidez en envíos nacionales.
