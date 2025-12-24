@@ -1,5 +1,7 @@
 🍬 Chewy Lab | E-commerce Platform
-<img width="844" height="632" alt="logosinfondo" src="https://github.com/user-attachments/assets/37b42949-810b-4f34-8cf0-87a6a3af45b2" />
+
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/7a03a0d7-5d82-481c-a193-6abcf45dffe2" />
+
 🧪 El Concepto
 Chewy Lab es una marca nativa digital (DTC) basada en Guadalajara, Jalisco, que redefine el consumo de dulces a granel. Nos especializamos en la curación y preparación de gomitas premium en formatos de 1 kilogramo, combinando técnicas de "alquimia de sabor" (mezclas ácidas, picantes y botánicas) con un empaque de lujo diseñado para la experiencia de unboxing perfecta.
 
