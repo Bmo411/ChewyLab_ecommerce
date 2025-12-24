@@ -1,0 +1,68 @@
+[
+  {
+    "uuid": "cyber-001",
+    "title": "Sudadera Glitchcore",
+    "price": 95,
+    "oldPrice": null,
+    "category": "Cyber-Noir",
+    "image": "../Media/new/glitchcore.png",
+    "description": "El caos digital hecho tejido. Algodón premium con impresión de alta densidad.",
+    "stock": 10,
+    "isNew": true
+  },
+  {
+    "uuid": "bloom-002",
+    "title": "Camiseta Digital Bloom",
+    "price": 95,
+    "oldPrice": 119,
+    "category": "Digital Bloom",
+    "image": "../Media/new/digitalbloom.png",
+    "description": "Naturaleza sintética. Una fusión entre lo orgánico y lo procesado.",
+    "stock": 15,
+    "isNew": false
+  },
+  {
+    "uuid": "circuit-003",
+    "title": "Gorra Circuits & Roots",
+    "price": 45,
+    "oldPrice": null,
+    "category": "Circuits & Roots",
+    "image": "../Media/new/circuitsroots.png",
+    "description": "Conexiones visibles. Bordado 3D sobre panel estructurado.",
+    "stock": 8,
+    "isNew": false
+  },
+  {
+    "uuid": "jacket-004",
+    "title": "Chaqueta Anarchy",
+    "price": 150,
+    "oldPrice": null,
+    "category": "Cyber-Noir",
+    "image": "../Media/new/sueter.png",
+    "description": "Resistencia urbana. Materiales impermeables y corte oversize.",
+    "stock": 5,
+    "isNew": true
+  },
+  {
+    "uuid": "db2f34e9-91ba-4b79-886a-feb9ae932b54",
+    "title": "Corrupted Sector Cargos",
+    "description": "Pantalones tácticos con costuras de neón y patrón de error de datos. Resistencia urbana.",
+    "price": 85,
+    "category": "Cyber-Noir",
+    "stock": 10,
+    "image": "../Media/new/Cargos.png",
+    "oldPrice": null,
+    "isNew": true
+  },
+  {
+    "uuid": "a5c32dd5-63b8-48b2-b487-e430788ea2a1",
+    "title": "Hoodie Biosystem Failure",
+    "description": "Algodón pesado. Gráfico de alta densidad donde lo orgánico se funde con lo digital.",
+    "price": 110,
+    "category": "Digital Bloom",
+    "stock": 10,
+    "image": "../Media/new/hoodie.png",
+    "oldPrice": null,
+    "isNew": true
+  }
+]

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexión - Rotten Apple</title>
+
+    <link rel="icon" href="Media/logosinfondoico.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/RottenApple.css">
+
+    <style>
+        /* Estilos del HUB */
+        .hub-header {
+            padding: 80px 0 40px;
+            background-color: #050505;
+            text-align: center;
+            border-bottom: 1px solid #222;
+            background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 70%);
+        }
+
+        .social-grid {
+            padding: 60px 0;
+            min-height: 60vh;
+        }
+
+        /* Tarjetas de Redes Sociales (Data Ports) */
+        .social-card {
+            background: #0f0f0f;
+            border: 1px solid #333;
+            padding: 40px 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            display: block;
+            text-decoration: none;
+            height: 100%;
+        }
+
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #333;
+            transition: 0.4s;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            text-decoration: none;
+            background: #141414;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Colores específicos por red (adaptados al tema Dark) */
+        .card-insta:hover {
+            border-color: #E1306C;
+        }
+
+        .card-insta:hover::before {
+            background: #E1306C;
+        }
+
+        .card-insta:hover .social-icon {
+            color: #E1306C;
+            text-shadow: 0 0 15px rgba(225, 48, 108, 0.6);
+        }
+
+        .card-tiktok:hover {
+            border-color: #00f2ea;
+        }
+
+        .card-tiktok:hover::before {
+            background: linear-gradient(90deg, #00f2ea, #ff0050);
+        }
+
+        .card-tiktok:hover .social-icon {
+            color: #fff;
+            text-shadow: 2px 2px #ff0050, -2px -2px #00f2ea;
+        }
+
+        .card-twitter:hover {
+            border-color: #1DA1F2;
+        }
+
+        .card-twitter:hover::before {
+            background: #1DA1F2;
+        }
+
+        .card-twitter:hover .social-icon {
+            color: #1DA1F2;
+            text-shadow: 0 0 15px rgba(29, 161, 242, 0.6);
+        }
+
+        .card-discord:hover {
+            border-color: #5865F2;
+        }
+
+        .card-discord:hover::before {
+            background: #5865F2;
+        }
+
+        .card-discord:hover .social-icon {
+            color: #5865F2;
+            text-shadow: 0 0 15px rgba(88, 101, 242, 0.6);
+        }
+
+        .social-icon {
+            font-size: 3.5rem;
+            color: #444;
+            margin-bottom: 20px;
+            transition: 0.4s;
+        }
+
+        .social-title {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        .social-handle {
+            color: var(--color-accent);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            box-shadow: 0 0 5px #2ecc71;
+        }
+
+        /* Sección de Email Simple */
+        .direct-line {
+            border-top: 1px solid #222;
+            padding: 50px 0;
+            text-align: center;
+            background: #080808;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex flex-column min-vh-100">
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="navbar-brand" href="mainpage.html">
+                    <img src="../Media/logosinfondoico.ico" alt="Rotten Apple Logo" />
+                </a>
+                <!-- Botón hamburguesa -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Enlaces -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="colections.html">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="colections.html">Collections</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="art.html">Art</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <!-- Ícono de carrito -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="shoppingcart.html"><i class="fas fa-shopping-cart"></i></a>
+                        </li>
+
+                        <!-- Dropdown de cuenta -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mi cuenta
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#loginModal">
+                                    Log in
+                                </a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#loginModal">Sign
+                                    up</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <header class="hub-header">
+            <h1 class="text-white glitch-effect" style="font-family: 'Share Tech Mono'; font-size: 3.5rem;">NETWORK_HUB
+            </h1>
+            <p class="text-muted">Elige tu canal de transmisión preferido.</p>
+        </header>
+
+        <section class="social-grid">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <a href="https://instagram.com" target="_blank" class="social-card card-insta">
+                            <i class="fab fa-instagram social-icon"></i>
+                            <h3 class="social-title">VISUAL_LOG</h3>
+                            <p class="social-handle">@rotten_sys</p>
+                            <small class="text-muted"><span class="status-dot"></span>Online</small>
+                        </a>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <a href="https://tiktok.com" target="_blank" class="social-card card-tiktok">
+                            <i class="fab fa-tiktok social-icon"></i>
+                            <h3 class="social-title">GLITCH_FEED</h3>
+                            <p class="social-handle">@rotten_clips</p>
+                            <small class="text-muted"><span class="status-dot"></span>Uploading...</small>
+                        </a>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <a href="https://twitter.com" target="_blank" class="social-card card-twitter">
+                            <i class="fab fa-twitter social-icon"></i>
+                            <h3 class="social-title">BURST_COMMS</h3>
+                            <p class="social-handle">@rotten_void</p>
+                            <small class="text-muted">Last active: 2m ago</small>
+                        </a>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <a href="https://discord.com" target="_blank" class="social-card card-discord">
+                            <i class="fab fa-discord social-icon"></i>
+                            <h3 class="social-title">THE_HIVE</h3>
+                            <p class="social-handle">Rotten Community</p>
+                            <small class="text-muted"><span class="status-dot"></span>420 Members</small>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="direct-line">
+            <div class="container">
+                <h4 class="text-white mb-3" style="font-family: 'Share Tech Mono'">¿ASUNTOS CLASIFICADOS?</h4>
+                <p class="text-muted mb-4">Para colaboraciones, prensa o problemas con pedidos.</p>
+                <a href="mailto:contact@rottenapple.net" class="btn btn-outline-light px-5 py-2"
+                    style="border-radius: 0; border-color: var(--color-primary);">
+                    <i class="fas fa-envelope mr-2"></i> ENVIAR CORREO ENCRIPTADO
+                </a>
+            </div>
+        </section>
+
+        <footer class="text-center py-4 text-white mt-auto"
+            style="background-color: #0a0a0a; border-top: 1px solid #222;">
+            <p>&copy; 2025 Rotten Apple. All Systems Operational.</p>
+            <div class="social-icons">
+                <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+
+    </div>
+    <!-- Modal de Registro/Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background-color: #1a1a1a; color: white;">
+
+                <div class="modal-header border-bottom-0 pb-0">
+                    <ul class="nav nav-tabs border-bottom-0 w-100" id="authTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active font-weight-bold" id="login-tab" data-toggle="tab"
+                                href="#loginPanel" role="tab" style="color: #3EB8A8; background: transparent;">Iniciar
+                                Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-weight-bold" id="register-tab" data-toggle="tab"
+                                href="#registerPanel" role="tab"
+                                style="color: #5B3A7B; background: transparent;">Registrarse</a>
+                        </li>
+                    </ul>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="tab-content" id="authTabContent">
+
+                        <div class="tab-pane fade show active" id="loginPanel" role="tabpanel">
+                            <form id="loginForm">
+                                <div class="form-group">
+                                    <label>Correo electrónico</label>
+                                    <input type="email" class="form-control bg-dark text-white border-0" id="loginEmail"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Contraseña</label>
+                                    <input type="password" class="form-control bg-dark text-white border-0"
+                                        id="loginPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-block font-weight-bold mt-4"
+                                    style="background-color: #3EB8A8; color: #fff;">ENTRAR</button>
+                            </form>
+                            <div id="loginAlert" class="mt-3" style="display: none;"></div>
+                        </div>
+
+                        <div class="tab-pane fade" id="registerPanel" role="tabpanel">
+                            <form id="registerForm">
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control bg-dark text-white border-0" id="regName"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Correo electrónico</label>
+                                    <input type="email" class="form-control bg-dark text-white border-0" id="regEmail"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Contraseña</label>
+                                    <input type="password" class="form-control bg-dark text-white border-0"
+                                        id="regPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-block font-weight-bold mt-4"
+                                    style="background-color: #5B3A7B; color: #fff;">REGISTRARSE</button>
+                            </form>
+                            <div id="registerAlert" class="mt-3" style="display: none;"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- LÓGICA DE REGISTRO ---
+        document.getElementById('registerForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const alertBox = document.getElementById('registerAlert');
+
+            try {
+                const response = await fetch('/api/users', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+                const result = await response.json();
+
+                if (response.ok) {
+                    alertBox.className = 'alert alert-success';
+                    alertBox.textContent = '¡Registro exitoso! Por favor inicia sesión.';
+                    alertBox.style.display = 'block';
+                    document.getElementById('registerForm').reset();
+                } else {
+                    alertBox.className = 'alert alert-danger';
+                    alertBox.textContent = result.message || 'Error';
+                    alertBox.style.display = 'block';
+                }
+            } catch (error) { console.error(error); }
+        });
+
+        // --- LÓGICA DE LOGIN ---
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const alertBox = document.getElementById('loginAlert');
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const result = await response.json();
+
+                if (response.ok) {
+                    // GUARDAR SESIÓN EN NAVEGADOR
+                    localStorage.setItem('currentUser', result.user.email);
+                    localStorage.setItem('currentUserName', result.user.name);
+                    localStorage.setItem('currentUserRole', result.user.role);
+
+                    alertBox.className = 'alert alert-success';
+                    alertBox.textContent = 'Bienvenido de nuevo.';
+                    alertBox.style.display = 'block';
+
+                    setTimeout(() => {
+                        window.location.reload(); // Recargar para actualizar navbar y carrito
+                    }, 1000);
+                } else {
+                    alertBox.className = 'alert alert-danger';
+                    alertBox.textContent = 'Correo o contraseña incorrectos.';
+                    alertBox.style.display = 'block';
+                }
+            } catch (error) {
+                console.error(error);
+                alertBox.textContent = 'Error de conexión';
+                alertBox.style.display = 'block';
+            }
+        });
+    </script>
+    <script src="js/rotten_engine.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="js/rotten_engine.js"></script>
+
+</body>
+
+</html>

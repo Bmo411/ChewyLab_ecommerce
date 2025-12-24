@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito - RottenApple</title>
+
+    <link rel="icon" href="Media/logosinfondoico.ico" type="image/x-icon" />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+
+    <link rel="stylesheet" href="css/RottenApple.css" />
+  </head>
+  <body>
+    <div class="d-flex flex-column" style="min-height: 100vh">
+      
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="mainpage.html">
+            <img src="Media/logosinfondoico.ico" alt="Rotten Apple Logo" />
+          </a>
+          
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="colections.html">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="colections.html">Collections</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="shoppingcart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                  Mi cuenta
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#">Log in</a>
+                  <a class="dropdown-item" href="#">Sign up</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <main class="container flex-grow-1 my-5">
+        <div class="text-center mb-4">
+          <h1 style="font-weight: 600">Tu Carrito</h1>
+          <p class="text-muted">
+            Los envíos y códigos de descuento se calculan en el siguiente paso.
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8">
+            <h3 class="h5 mb-3">Productos seleccionados</h3>
+            
+            <div class="product-list" id="cart-items-container">
+                <div class="text-center py-5">
+                    <div class="spinner-border text-secondary" role="status">
+                        <span class="sr-only">Cargando...</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="h5 mt-5 mb-3">Garantías de Rotten Apple</h3>
+            <div class="list-group list-group-flush shipping-info">
+              <div class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-secondary text-light">
+                <div>
+                  <i class="fas fa-undo-alt fa-fw mr-2 text-primary"></i>
+                  Devoluciones gratis por 30 días
+                </div>
+              </div>
+              <div class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-secondary text-light">
+                <div>
+                  <i class="fas fa-truck fa-fw mr-2 text-primary"></i>
+                  Envío internacional seguro
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="card summary-card border-primary">
+              <div class="card-body">
+                <h5 class="card-title">Resumen</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Subtotal
+                    <span id="cart-subtotal">$0.00</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Envío
+                    <span class="text-muted small">Por calcular</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center h5 border-top pt-3">
+                    <strong>Total</strong>
+                    <strong id="cart-total" style="color: var(--color-primary);">$0.00</strong>
+                  </li>
+                </ul>
+                
+                <button type="button" class="btn btn-checkout btn-block mt-3 p-3" data-toggle="modal" data-target="#shippingModal">
+                  PROCEDER AL PAGO
+                </button>
+                
+                <a href="colections.html" class="btn btn-outline-secondary btn-block mt-2">
+                   Seguir comprando
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="text-center py-4 bg-black border-top border-dark">
+        <p class="mb-2 text-white">&copy; 2024 RottenApple. Todos los derechos reservados.</p>
+        <div>
+          <a href="#" class="mx-2 text-muted">Términos</a> |
+          <a href="#" class="mx-2 text-muted">Privacidad</a> |
+          <a href="#" class="mx-2 text-muted">Soporte</a>
+        </div>
+      </footer>
+    </div>
+
+    <div class="modal fade" id="shippingModal" tabindex="-1" role="dialog" aria-labelledby="shippingModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-dark" id="shippingModalLabel">Elige tu método de envío</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-dark">
+            <form>
+              <div class="shipping-option border-bottom pb-3 mb-3">
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="pickupRadio" name="shippingMethod" class="custom-control-input" checked />
+                  <label class="custom-control-label w-100" for="pickupRadio">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="font-weight-bold">Pick-up point</span>
+                      <span class="font-weight-bold">$16</span>
+                    </div>
+                    <small class="text-muted">Llega en: 2-4 semanas</small>
+                  </label>
+                </div>
+                <div class="ml-4 mt-2 p-2 bg-light rounded">
+                  <strong>Punto de entrega:</strong><br>
+                  <span class="text-muted">Rotten Store, Centro Magno, GDL</span>
+                </div>
+              </div>
+              <div class="shipping-option">
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="deliveryRadio" name="shippingMethod" class="custom-control-input" />
+                  <label class="custom-control-label w-100" for="deliveryRadio">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="font-weight-bold">Envío a Domicilio</span>
+                      <span class="font-weight-bold">$36</span>
+                    </div>
+                    <small class="text-muted">Llega en: 3-5 días hábiles</small>
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-checkout" style="background-color: var(--color-primary); border:none;" data-dismiss="modal" data-toggle="modal" data-target="#paymentModal">
+              Continuar al Pago
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-dark" id="paymentModalLabel">Pago Seguro</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-dark">
+            <div id="paymentAccordion">
+              <form>
+                <div class="payment-option border-bottom pb-3 mb-3">
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="creditCardRadio" name="paymentMethod" class="custom-control-input" checked />
+                    <label class="custom-control-label w-100" for="creditCardRadio" data-toggle="collapse" data-target="#collapseCreditCard">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <span class="font-weight-bold">Tarjeta Débito / Crédito</span>
+                        <i class="far fa-credit-card fa-lg"></i>
+                      </div>
+                    </label>
+                  </div>
+                  <div id="collapseCreditCard" class="collapse show" data-parent="#paymentAccordion">
+                    <div class="payment-details mt-3 p-3 bg-light rounded">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Número de tarjeta" />
+                      </div>
+                      <div class="form-row">
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="MM / YY" />
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="CVC" />
+                        </div>
+                      </div>
+                      <div class="mt-2 text-muted small">
+                        <i class="fas fa-lock text-success"></i> Encriptado SSL de 256-bits.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="payment-option">
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="paypalRadio" name="paymentMethod" class="custom-control-input" />
+                    <label class="custom-control-label w-100" for="paypalRadio">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <span class="font-weight-bold">PayPal</span>
+                        <i class="fab fa-paypal fa-lg text-primary"></i>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-block font-weight-bold text-white" id="btn-complete-purchase" style="background-color: var(--color-primary);">
+              PAGAR AHORA
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="processingModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center p-5">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+              <span class="sr-only">Procesando...</span>
+            </div>
+            <h5 class="mt-3 text-dark">Procesando pago...</h5>
+            <small class="text-muted">Por favor, no cierres esta ventana.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="thankYouModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center p-5">
+            <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
+            <h2 class="text-dark font-weight-bold">¡Orden Recibida!</h2>
+            <p class="text-muted">Gracias por comprar en Rotten Apple.</p>
+            <p class="small text-muted">Hemos enviado los detalles a tu correo.</p>
+            
+            <a href="colections.html" class="btn btn-block mt-4 text-white" style="background-color: var(--color-primary);">
+              Volver a la Tienda
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // Al hacer clic en "PAGAR AHORA"
+        $("#btn-complete-purchase").on("click", function () {
+          // 1. Ocultar modal pago
+          $("#paymentModal").modal("hide");
+          
+          // 2. Mostrar spinner
+          $("#processingModal").modal("show");
+
+          // 3. Simular espera de 3 segundos
+          setTimeout(function () {
+            $("#processingModal").modal("hide");
+            $("#thankYouModal").modal("show");
+            
+            // 4. BORRAR CARRITO (Lógica de negocio)
+            localStorage.removeItem('rottenCart');
+            
+            // Actualizar vista si es posible
+            if(typeof updateCartBadge === 'function') updateCartBadge();
+            const cartContainer = document.getElementById('cart-items-container');
+            if(cartContainer) cartContainer.innerHTML = '<div class="alert alert-success">¡Compra realizada! Tu carrito se ha vaciado.</div>';
+            const totals = document.querySelectorAll('#cart-subtotal, #cart-total');
+            totals.forEach(el => el.textContent = '$0.00');
+
+          }, 3000);
+        });
+      });
+    </script>
+
+    <script src="js/rotten_engine.js"></script>
+  </body>
+</html>

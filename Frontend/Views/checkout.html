@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - RottenApple</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../Media/logosinfondoico.ico" type="image/x-icon" />
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+
+    <link rel="stylesheet" href="checkout-page.css">  
+  </head>
+  <body>
+    <div class="d-flex flex-column min-vh-100">
+      <!-- 🔹 NAVBAR -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <!-- Logo -->
+          <a class="navbar-brand" href="mainpage.html">
+            <img src="../Media/logosinfondoico.ico" alt="Rotten Apple Logo" />
+          </a>
+          <!-- Botón hamburguesa -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Enlaces -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="collections.html">Collections</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Art</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+              <!-- Ícono de carrito -->
+              <li class="nav-item">
+                <a class="nav-link" href="shoppingcart.html">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span class="cart-badge">2</span>
+                </a>
+              </li>
+
+              <!-- Dropdown de cuenta -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Mi cuenta
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#loginModal">
+                    Log in
+                  </a>
+                  <a class="dropdown-item" href="#">Sign up</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- MAIN CONTENT -->
+      <main class="flex-grow-1">
+        <div class="checkout-container">
+          <!-- Page Header -->
+          <div class="checkout-header">
+            <h1 class="checkout-title">Checkout</h1>
+            <p class="checkout-subtitle">Shipping details and payment info updated at checkout</p>
+          </div>
+
+          <div class="row">
+            <!-- Left Column: Forms -->
+            <div class="col-lg-7">
+              <!-- Customer Information -->
+              <div class="checkout-section">
+                <div class="section-header">
+                  <div class="user-icon">
+                    <i class="fas fa-user"></i>
+                  </div>
+                  <div>
+                    <h2 class="section-title">John Doe</h2>
+                    <a href="#" class="change-address-link">
+                      <i class="fas fa-edit"></i> Change address
+                    </a>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" value="johndoe@gmail.com" readonly>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Address</label>
+                    <input type="text" class="form-control" value="test*******32" readonly>
+                    <small class="form-text">***@gmail.com</small>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Mobile phone</label>
+                    <input type="tel" class="form-control" value="+1 67*****90" readonly>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Shipping Details -->
+              <div class="checkout-section">
+                <h2 class="section-title">Shipping Details</h2>
+
+                <!-- Product in cart -->
+                <div class="shipping-product">
+                  <div class="product-image-box">
+                    <img src="../Media/new/glitchcore.png" alt="Rotten Anarchy" class="shipping-product-img">
+                  </div>
+                  <div class="shipping-product-info">
+                    <h3 class="shipping-product-name">Rotten Anarchy</h3>
+                    <p class="shipping-product-meta">Green leopard, Unisex, Jeans</p>
+                  </div>
+                  <div class="shipping-product-quantity">
+                    <button class="qty-btn" onclick="decreaseQty()">-</button>
+                    <input type="number" class="qty-input" id="qty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQty()">+</button>
+                  </div>
+                  <div class="shipping-product-actions">
+                    <button class="btn-edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Shipping Options -->
+                <div class="shipping-options">
+                  <div class="shipping-option">
+                    <div class="custom-radio">
+                      <input type="radio" id="pickup" name="shipping" checked>
+                      <label for="pickup">
+                        <div class="shipping-option-content">
+                          <div>
+                            <i class="fas fa-map-marker-alt shipping-icon"></i>
+                            <strong>Pick-up point</strong>
+                            <p class="shipping-description">Shipping 2-4 weeks</p>
+                          </div>
+                          <span class="shipping-price">$16</span>
+                        </div>
+                        <div class="shipping-address">
+                          <strong>Ship to:</strong>
+                          <p>Granite Route, 30 Minerva St, Toronto<br>
+                          <a href="#" class="change-link">Change</a></p>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="shipping-option">
+                    <div class="custom-radio">
+                      <input type="radio" id="homedelivery" name="shipping">
+                      <label for="homedelivery">
+                        <div class="shipping-option-content">
+                          <div>
+                            <i class="fas fa-home shipping-icon"></i>
+                            <strong>Home delivery</strong>
+                            <p class="shipping-description">Shipping 3-6 weeks</p>
+                          </div>
+                          <span class="shipping-price">$36</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Payment -->
+              <div class="checkout-section">
+                <h2 class="section-title">Payment</h2>
+
+                <!-- Debit/Credit Card -->
+                <div class="payment-option">
+                  <div class="custom-radio">
+                    <input type="radio" id="card" name="payment" checked>
+                    <label for="card">
+                      <div class="payment-option-header">
+                        <span><i class="far fa-credit-card"></i> Debit / Credit Card</span>
+                        <i class="far fa-credit-card card-icon"></i>
+                      </div>
+                    </label>
+                  </div>
+                  
+                  <div class="payment-form" id="cardForm">
+                    <div class="mb-3">
+                      <input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    <div class="row">
+                      <div class="col-6 mb-3">
+                        <input type="text" class="form-control" placeholder="MM / YY" maxlength="5">
+                      </div>
+                      <div class="col-6 mb-3">
+                        <input type="text" class="form-control" placeholder="CVC / CVV" maxlength="4">
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <input type="text" class="form-control" placeholder="Cardholder name">
+                    </div>
+                    
+                    <div class="card-logos">
+                      <i class="fab fa-cc-visa"></i>
+                      <i class="fab fa-cc-mastercard"></i>
+                      <i class="fab fa-cc-amex"></i>
+                    </div>
+                    
+                    <p class="security-text">
+                      <i class="fas fa-lock"></i> All transactions are secure and encrypted with Security Stripes
+                    </p>
+                  </div>
+                </div>
+
+                <!-- PayPal -->
+                <div class="payment-option">
+                  <div class="custom-radio">
+                    <input type="radio" id="paypal" name="payment">
+                    <label for="paypal">
+                      <div class="payment-option-header">
+                        <span><i class="fab fa-paypal"></i> PayPal</span>
+                        <i class="fab fa-cc-paypal paypal-icon"></i>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- ApplePay -->
+                <div class="payment-option">
+                  <div class="custom-radio">
+                    <input type="radio" id="applepay" name="payment">
+                    <label for="applepay">
+                      <div class="payment-option-header">
+                        <span><i class="fab fa-apple"></i> ApplePay</span>
+                        <i class="fab fa-apple-pay applepay-icon"></i>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Complete Purchase Button -->
+                <button class="btn-complete-purchase">
+                  COMPLETE PURCHASE
+                </button>
+
+                <p class="terms-text">
+                  By clicking "Complete purchase", I certify that I am eligible for this product and have read and agree to the Terms and Conditions and Privacy Policy.
+                </p>
+              </div>
+            </div>
+
+            <!-- Right Column: Summary -->
+            <div class="col-lg-5">
+              <div class="summary-sidebar">
+                <h2 class="summary-title">Summary</h2>
+
+                <div class="summary-item">
+                  <span>Items in the Cart</span>
+                  <span>$30</span>
+                </div>
+                <div class="summary-item">
+                  <span>Shipping</span>
+                  <span>$16.00</span>
+                </div>
+                <div class="summary-item">
+                  <span>Service Updates</span>
+                  <span class="text-success">FREE</span>
+                </div>
+                <div class="summary-item discount-item">
+                  <span>Discount Code 8500995</span>
+                  <span class="text-danger">-$ 24.30</span>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-total">
+                  <span>Total</span>
+                  <span class="total-amount">$37</span>
+                </div>
+
+                <!-- Discount Code -->
+                <div class="discount-code-section">
+                  <div class="discount-header" onclick="toggleDiscount()">
+                    <span>DISCOUNT CODE / GIFT CARD</span>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="discount-form" id="discountForm">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="8500995" value="8500995">
+                      <button class="btn-apply">Apply</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Price Breakdown -->
+                <div class="price-breakdown">
+                  <div class="price-item">
+                    <span class="original-price">$95</span>
+                    <span class="sale-price">$70</span>
+                  </div>
+                  <p class="savings-text">You save 26%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- 🦶 FOOTER -->
+      <footer class="text-center py-4">
+        <p>&copy; 2024 RottenApple. Todos los derechos reservados.</p>
+        <div>
+          <a href="#" class="mx-2">Términos de Servicio</a> |
+          <a href="#" class="mx-2">Política de Privacidad</a> |
+          <a href="#" class="mx-2">Soporte</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="checkout-page.js"></script>
+  </body>
+</html>

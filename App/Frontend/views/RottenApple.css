@@ -1,0 +1,98 @@
+/* 🎨 Sistema de Colores Global */
+:root {
+  --color-bg-main: #1C1C1C;        /* Fondo principal */
+  --color-text-light: #F5F5F5;     /* Texto claro */
+  --color-primary: #5B3A7B;        /* Acento principal (púrpura profundo) */
+  --color-accent: #3EB8A8;         /* Acento secundario (turquesa/menta) */
+  --color-earth: #705E51;          /* Detalles terrosos */
+  --color-secondary-btn: #D9D9D9;  /* Botones secundarios */
+}
+
+/* 🌑 Fondo y tipografía general */
+body {
+  background-color: var(--color-bg-main);
+  color: var(--color-text-light);
+  font-family: "Poppins", sans-serif;
+}
+
+/* 🧭 Navbar */
+.navbar {
+  background-color: #000 !important;
+  border-bottom: 1px solid #222;
+}
+
+/* Logo siempre arriba a la izquierda */
+.navbar-brand {
+  height: 40px;
+}
+
+.navbar-brand img {
+  height: 40px;
+}
+
+/* Links del menú */
+.navbar-nav .nav-link {
+  color: var(--color-text-light) !important;
+  font-weight: 500;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--color-primary) !important;
+}
+
+/* Toggle (modo responsive) */
+.navbar-toggler {
+  border-color: #444;
+}
+
+/* 🛒 Ícono de carrito */
+.fa-shopping-cart {
+  font-size: 20px;
+  color: var(--color-accent);
+  margin-left: 15px;
+  cursor: pointer;
+}
+.fa-shopping-cart:hover {
+  color: var(--color-primary);
+}
+
+/* 🖼️ Hero / Jumbotron */
+.jumbotron {
+  background-color: #222;
+  width: 80vh;
+  height: 50vh;
+  background-image: url('../media/mainup.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hero-section h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: var(--color-text-light);
+}
+
+.hero-section p {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #ddd;
+}
+
+/* 💜 Botón principal personalizado */
+.personalized {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  border: none;
+  padding: 12px 30px;
+  font-size: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.personalized:hover {
+  background-color: var(--color-accent);
+}

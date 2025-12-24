@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colecciones - RottenApple</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="../Media/logosinfondoico.ico" type="image/x-icon" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+
+  <link rel="stylesheet" href="collections-page.css">
+</head>
+
+<body>
+  <div class="d-flex flex-column min-vh-100">
+    <!-- 🔹 NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="mainpage.html">
+          <img src="../Media/logosinfondoico.ico" alt="Rotten Apple Logo" />
+        </a>
+        <!-- Botón hamburguesa -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Enlaces -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="colections.html">Collections</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Art</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <!-- Ícono de carrito -->
+            <li class="nav-item">
+              <a class="nav-link" href="shoppingcart.html"><i class="fas fa-shopping-cart"></i></a>
+            </li>
+
+            <!-- Dropdown de cuenta -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Mi cuenta
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#loginModal">
+                  Log in
+                </a>
+                <a class="dropdown-item" href="#">Sign up</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow-1">
+      <!-- Breadcrumb -->
+      <div class="breadcrumb-section">
+        <div class="container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="mainpage.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Collections</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Page Title -->
+      <section class="page-header">
+        <div class="container">
+          <h1 class="page-title">Descubre Nuestras Colecciones</h1>
+          <p class="page-subtitle">Arte digital convertido en moda urbana</p>
+        </div>
+      </section>
+
+      <!-- Featured Collections Banner -->
+      <section class="featured-collections">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 mb-4">
+              <div class="collection-banner">
+                <img src="../Media/new/glitchcore.png" alt="Cyber-Noir">
+                <div class="collection-overlay">
+                  <h3 class="collection-name">Cyber-Noir</h3>
+                  <p class="collection-count">12 productos</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="collection-banner">
+                <img src="../Media/new/digitalbloom.png" alt="Digital Bloom">
+                <div class="collection-overlay">
+                  <h3 class="collection-name">Digital Bloom</h3>
+                  <p class="collection-count">8 productos</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="collection-banner">
+                <img src="../Media/new/circuitsroots.png" alt="Circuits & Roots">
+                <div class="collection-overlay">
+                  <h3 class="collection-name">Circuits & Roots</h3>
+                  <p class="collection-count">15 productos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filters & Products Section -->
+      <section class="products-section">
+        <div class="container">
+          <!-- Filter Bar -->
+          <div class="filter-bar">
+            <div class="filter-left">
+              <span class="product-count">28 Productos</span>
+            </div>
+            <div class="filter-right">
+              <button class="filter-btn active" data-filter="all">Todo</button>
+              <button class="filter-btn" data-filter="new">Nuevo</button>
+              <button class="filter-btn" data-filter="sale">En Oferta</button>
+              <div class="sort-dropdown">
+                <select class="sort-select">
+                  <option value="featured">Destacados</option>
+                  <option value="price-low">Precio: Menor a Mayor</option>
+                  <option value="price-high">Precio: Mayor a Menor</option>
+                  <option value="newest">Más Recientes</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-category="new">
+              <div class="product-badge new">Nuevo</div>
+              <div class="product-image-wrapper">
+                <img src="../Media/new/glitchcore.png" alt="Producto 1" class="product-img">
+                <div class="product-quick-view">
+                  <button class="btn-quick-view" data-toggle="modal" data-target="#quickViewModal">
+                    Vista Rápida
+                  </button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-title">Sudadera Cyber-Noir</h3>
+                <p class="product-category">Cyber-Noir Collection</p>
+                <div class="product-price">
+                  <span class="price">$95</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-category="sale">
+              <div class="product-badge sale">-20%</div>
+              <div class="product-image-wrapper">
+                <img src="../Media/new/digitalbloom.png" alt="Producto 2" class="product-img">
+                <div class="product-quick-view">
+                  <button class="btn-quick-view" data-toggle="modal" data-target="#quickViewModal">
+                    Vista Rápida
+                  </button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-title">Camiseta Digital Bloom</h3>
+                <p class="product-category">Digital Bloom Collection</p>
+                <div class="product-price">
+                  <span class="price">$95</span>
+                  <span class="price-old">$119</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+              <div class="product-image-wrapper">
+                <img src="../Media/new/circuitsroots.png" alt="Producto 3" class="product-img">
+                <div class="product-quick-view">
+                  <button class="btn-quick-view" data-toggle="modal" data-target="#quickViewModal">
+                    Vista Rápida
+                  </button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-title">Gorra Circuits & Roots</h3>
+                <p class="product-category">Circuits & Roots Collection</p>
+                <div class="product-price">
+                  <span class="price">$45</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-category="new">
+              <div class="product-badge new">Nuevo</div>
+              <div class="product-image-wrapper">
+                <img src="../Media/new/glitchcore.png" alt="Producto 4" class="product-img">
+                <div class="product-quick-view">
+                  <button class="btn-quick-view" data-toggle="modal" data-target="#quickViewModal">
+                    Vista Rápida
+                  </button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-title">Chaqueta Glitch</h3>
+                <p class="product-category">Cyber-Noir Collection</p>
+                <div class="product-price">
+                  <span class="price">$150</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+              <div class="product-image-wrapper">
+                <img src="../Media/new/digitalbloom.png" alt="Producto 5" class="product-img">
+                <div class="product-quick-view">
+                  <button class="btn-quick-view" data-toggle="modal" data-target="#quickViewModal">
+                    Vista Rápida
+                  </button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-title">Pantalón Urban Tech</h3>
+                <p class="product-category">Digital Bloom Collection</p>
+                <div class="product-price">
+                  <span class="price">$85</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-category="sale">
+              <div class="product-badge sale">-15%</div>
+              <div class="product-image-wrapper">
+                <img src="../Media/new/circuitsroots.png" alt="Producto 6" class="product-img">
+                <div class="product-quick-view">
+                  <button class="btn-quick-view" data-toggle="modal" data-target="#quickViewModal">
+                    Vista Rápida
+                  </button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-title">Hoodie Decay</h3>
+                <p class="product-category">Circuits & Roots Collection</p>
+                <div class="product-price">
+                  <span class="price">$102</span>
+                  <span class="price-old">$120</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+              <div class="product-image-wrapper">
+                <img src="../Media/new/glitchcore.png" alt="Producto 7" class="product-img">
+                <div class="product-quick-view">
+                  <button class="btn-quick-view" data-toggle="modal" data-target="#quickViewModal">
+                    Vista Rápida
+                  </button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-title">Mochila Pixel</h3>
+                <p class="product-category">Accessories</p>
+                <div class="product-price">
+                  <span class="price">$65</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card" data-category="new">
+              <div class="product-badge new">Nuevo</div>
+              <div class="product-image-wrapper">
+                <img src="../Media/new/digitalbloom.png" alt="Producto 8" class="product-img">
+                <div class="product-quick-view">
+                  <button class="btn-quick-view" data-toggle="modal" data-target="#quickViewModal">
+                    Vista Rápida
+                  </button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-title">Joggers Matrix</h3>
+                <p class="product-category">Digital Bloom Collection</p>
+                <div class="product-price">
+                  <span class="price">$78</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Load More Button -->
+          <div class="load-more-section">
+            <button class="btn-load-more">
+              Mostrar Más Productos
+            </button>
+            <p class="showing-text">Mostrando 8 de 28 productos</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 🦶 FOOTER -->
+    <footer class="text-center py-4">
+      <p>&copy; 2024 RottenApple. Todos los derechos reservados.</p>
+      <div>
+        <a href="#" class="mx-2">Términos de Servicio</a> |
+        <a href="#" class="mx-2">Política de Privacidad</a> |
+        <a href="#" class="mx-2">Soporte</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="collections-page.js"></script>
+  <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="product-modal-container">
+            <div class="product-modal">
+              <div class="gallery-modal">
+                <img src="../Media/new/glitchcore.png" id="product-img-modal" alt="Imagen de producto" />
+                <div class="controls-modal">
+                  <span class="modal-gallery-btn active"></span>
+                  <span class="modal-gallery-btn"></span>
+                  <span class="modal-gallery-btn"></span>
+                </div>
+              </div>
+              <div class="details-modal">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="
+                      position: absolute;
+                      top: 20px;
+                      right: 35px;
+                      font-size: 2.5rem;
+                      color: #241e20;
+                      opacity: 0.5;
+                      z-index: 10;
+                      padding: 0;
+                      background: none;
+                      border: none;
+                    ">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h1>Nombre del Producto</h1>
+                <h2>$95</h2>
+                <h3>20% off</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <form>
+                  <div class="size-select-modal">
+                    <p>Size</p>
+                    <label for="size-s-modal">
+                      <input type="radio" id="size-s-modal" name="size-modal" value="S" />
+                      <span>S</span>
+                    </label>
+                    <label for="size-m-modal">
+                      <input type="radio" id="size-m-modal" name="size-modal" value="M" />
+                      <span>M</span>
+                    </label>
+                    <label for="size-l-modal">
+                      <input type="radio" id="size-l-modal" name="size-modal" value="L" />
+                      <span>L</span>
+                    </label>
+                    <label for="size-xl-modal">
+                      <input type="radio" id="size-xl-modal" name="size-modal" value="XL" />
+                      <span>XL</span>
+                    </label>
+                  </div>
+                  <div class="quantity-select-modal">
+                    <p>Quantity</p>
+                    <input type="number" value="1" min="1" />
+                  </div>
+                  <button type="submit" class="btn-add-to-cart-modal">
+                    Add to Cart
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Referencias a los elementos del modal
+    let productImgModal = document.getElementById("product-img-modal");
+    let modalBtns = document.querySelectorAll(".modal-gallery-btn");
+
+    // Define las imágenes que usará la galería
+    // (Usa las imágenes que ya tienes como ejemplo)
+    const modalImages = [
+                  <img src="../Media/new/circuitsroots.png" alt="Producto 6" class="product-img">
+                  <div class="product-quick-view">
+                    <button class="btn-quick-view" data-toggle="modal" data-target="#quickViewModal">
+                      Vista Rápida
+                    </button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <h3 class="product-title">Hoodie Decay</h3>
+                  <p class="product-category">Circuits & Roots Collection</p>
+                  <div class="product-price">
+                    <span class="price">$102</span>
+                    <span class="price-old">$120</span>
+                  </div>
+                </div>
+              </div >
+
+              <!-- Product 7 -->
+              <div class="product-card">
+                <div class="product-image-wrapper">
+                  <img src="../Media/new/glitchcore.png" alt="Producto 7" class="product-img">
+                  <div class="product-quick-view">
+                    <button class="btn-quick-view" data-toggle="modal" data-target="#quickViewModal">
+                      Vista Rápida
+                    </button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <h3 class="product-title">Mochila Pixel</h3>
+                  <p class="product-category">Accessories</p>
+                  <div class="product-price">
+                    <span class="price">$65</span>
+                  </div>
+                </div>
+              </div>
+
+              <!--Product 8 -- >
+      <div class="product-card" data-category="new">
+        <div class="product-badge new">Nuevo</div>
+        <div class="product-image-wrapper">
+          <img src="../Media/new/digitalbloom.png" alt="Producto 8" class="product-img">
+            <div class="product-quick-view">
+              <button class="btn-quick-view" data-toggle="modal" data-target="#quickViewModal">
+                Vista Rápida
+              </button>
+            </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Joggers Matrix</h3>
+          <p class="product-category">Digital Bloom Collection</p>
+          <div class="product-price">
+            <span class="price">$78</span>
+          </div>
+        </div>
+      </div>
+            </div >
+
+            < !--Load More Button-- >
+      <div class="load-more-section">
+        <button class="btn-load-more">
+          Mostrar Más Productos
+        </button>
+        <p class="showing-text">Mostrando 8 de 28 productos</p>
+      </div>
+          </div >
+        </section >
+      </main >
+
+      < !-- 🦶 FOOTER-- >
+      <footer class="text-center py-4">
+        <p>&copy; 2024 RottenApple. Todos los derechos reservados.</p>
+        <div>
+          <a href="#" class="mx-2">Términos de Servicio</a> |
+          <a href="#" class="mx-2">Política de Privacidad</a> |
+          <a href="#" class="mx-2">Soporte</a>
+        </div>
+      </footer>
+    </div >
+
+      <script src="collections-page.js"></script>
+  <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="product-modal-container">
+            <div class="product-modal">
+              <div class="gallery-modal">
+                <img src="../Media/new/glitchcore.png" id="product-img-modal" alt="Imagen de producto" />
+                <div class="controls-modal">
+                  <span class="modal-gallery-btn active"></span>
+                  <span class="modal-gallery-btn"></span>
+                  <span class="modal-gallery-btn"></span>
+                </div>
+              </div>
+              <div class="details-modal">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="
+                      position: absolute;
+                      top: 20px;
+                      right: 35px;
+                      font-size: 2.5rem;
+                      color: #241e20;
+                      opacity: 0.5;
+                      z-index: 10;
+                      padding: 0;
+                      background: none;
+                      border: none;
+                    ">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h1>Nombre del Producto</h1>
+                <h2>$95</h2>
+                <h3>20% off</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <form>
+                  <div class="size-select-modal">
+                    <p>Size</p>
+                    <label for="size-s-modal">
+                      <input type="radio" id="size-s-modal" name="size-modal" value="S" />
+                      <span>S</span>
+                    </label>
+                    <label for="size-m-modal">
+                      <input type="radio" id="size-m-modal" name="size-modal" value="M" />
+                      <span>M</span>
+                    </label>
+                    <label for="size-l-modal">
+                      <input type="radio" id="size-l-modal" name="size-modal" value="L" />
+                      <span>L</span>
+                    </label>
+                    <label for="size-xl-modal">
+                      <input type="radio" id="size-xl-modal" name="size-modal" value="XL" />
+                      <span>XL</span>
+                    </label>
+                  </div>
+                  <div class="quantity-select-modal">
+                    <p>Quantity</p>
+                    <input type="number" value="1" min="1" />
+                  </div>
+                  <button type="submit" class="btn-add-to-cart-modal">
+                    Add to Cart
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      // Referencias a los elementos del modal
+        let productImgModal = document.getElementById("product-img-modal");
+        let modalBtns = document.querySelectorAll(".modal-gallery-btn");
+
+        // Define las imágenes que usará la galería
+        // (Usa las imágenes que ya tienes como ejemplo)
+        const modalImages = [
+        "../Media/new/glitchcore.png",
+        "../Media/new/digitalbloom.png",
+        "../Media/new/circuitsroots.png",
+        ];
+
+      modalBtns.forEach((btn, index) => {
+          btn.addEventListener("click", () => {
+            // Asegurarse de que el índice es válido
+            if (index < modalImages.length) {
+              productImgModal.src = modalImages[index];
+            }
+
+            // Quitar la clase 'active' del botón anterior
+            let currentActive = document.querySelector(".modal-gallery-btn.active");
+            if (currentActive) {
+              currentActive.classList.remove("active");
+            }
+
+            // Añadir 'active' al botón clickeado
+            btn.classList.add("active");
+          });
+      });
+
+        // --- LOGICA DE CARRITO ---
+        $(document).ready(function() {
+          // Al abrir el modal, poblar datos
+          $('.btn-quick-view').on('click', function () {
+            const card = $(this).closest('.product-card');
+            const title = card.find('.product-title').text();
+            const price = card.find('.price').text(); // e.g. "$95"
+            const imgSrc = card.find('.product-img').attr('src');
+
+            // Poblar Modal
+            $('#quickViewModal h1').text(title);
+            $('#quickViewModal h2').text(price);
+            $('#product-img-modal').attr('src', imgSrc);
+
+            // Guardar título para usarlo al enviar
+            $('#quickViewModal').data('product-title', title);
+          });
+
+        // Manejar el submit del formulario "Add to Cart"
+        $('#quickViewModal form').on('submit', async function(e) {
+          e.preventDefault();
+        const title = $('#quickViewModal').data('product-title');
+
+        // Limpiar el precio (quitar $) si es necesario, pero la API busca por título
+        // La API espera POST /api/cart/:nombre
+
+        if (!title) return;
+
+        try {
+                const response = await fetch(`/api/cart/${encodeURIComponent(title)}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    alert('¡Producto agregado al carrito!');
+                    $('#quickViewModal').modal('hide');
+                } else {
+                    const data = await response.json();
+                    alert('Error: ' + (data.message || 'No se pudo agregar'));
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Error de conexión con el servidor');
+            }
+        });
+      });
+  </script>
+</body>
+
+</html>
