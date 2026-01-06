@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap");
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 45 20% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 45 20% 95%;
+
+    --primary: 43 74% 49%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 45 20% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 45 10% 60%;
+
+    --accent: 43 74% 49%;
+    --accent-foreground: 0 0% 4%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 43 30% 25%;
+    --input: 0 0% 15%;
+    --ring: 43 74% 49%;
+
+    --radius: 0.5rem;
+
+    /* Custom luxury tokens */
+    --gold: 43 90% 45%;
+    --gold-light: 40 100% 90%;
+    --gold-dark: 43 70% 35%;
+    --cream: 45 20% 95%;
+    --charcoal: 0 0% 8%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(
+      135deg,
+      hsl(43, 74%, 49%),
+      hsl(43, 80%, 65%)
+    );
+    --gradient-dark: linear-gradient(180deg, hsl(0, 0%, 4%), hsl(0, 0%, 8%));
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 10%), hsl(0, 0%, 6%));
+
+    /* Shadows */
+    --shadow-gold: 0 4px 30px -5px hsl(43 74% 49% / 0.3);
+    --shadow-gold-lg: 0 10px 50px -10px hsl(43 74% 49% / 0.4);
+    --shadow-elegant: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
+
+    /* Typography */
+    --font-display: "Playfair Display", serif;
+    --font-body: "Montserrat", sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 45 20% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 45 20% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 45 20% 95%;
+    --primary: 43 74% 49%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 45 20% 95%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 45 10% 60%;
+    --accent: 43 74% 49%;
+    --accent-foreground: 0 0% 4%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 43 30% 25%;
+    --input: 0 0% 15%;
+    --ring: 43 74% 49%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(43, 74%, 49%), hsl(43, 80%, 65%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, hsl(43, 74%, 49%), hsl(43, 80%, 65%));
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .shadow-gold-lg {
+    box-shadow: var(--shadow-gold-lg);
+  }
+
+  .border-gold {
+    border-color: hsl(43, 74%, 49%);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 8s linear infinite;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
