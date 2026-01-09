@@ -50,7 +50,7 @@ const NewsletterSection = () => {
               placeholder="Tu correo electrónico"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 h-14 px-6 bg-secondary border border-border/50 rounded-md text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-gold transition-colors font-body"
+              className="flex-1 h-10 px-6 bg-secondary border border-border/50 rounded-md text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-gold transition-colors font-body"
               required
             />
             <Button
@@ -58,6 +58,7 @@ const NewsletterSection = () => {
               variant="hero"
               size="lg"
               className="sm:w-auto"
+              onClick={handleSubmit}
             >
               Suscribirse
             </Button>

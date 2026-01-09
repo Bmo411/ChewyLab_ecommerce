@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ShoppingBag } from "lucide-react";
+import logo from "../assets/ChewyLablogoSinFondo.png";
 // Removed playful icons (Beaker) to keep it clean/minimalist if requested, or kept minimal.
 // User image shows a hexagonal logo. I'll use text for now or a simple svg placeholder.
 
@@ -38,10 +39,16 @@ export default function Navbar() {
           {/* LEFT: Logo */}
           <Link
             to="/"
-            className="text-2xl font-bold tracking-tight text-lab-white transition-colors duration-300 relative group"
+            className="flex items-center gap-3 transition-opacity duration-300 hover:opacity-90"
           >
-            {/* Using GoldText logic inline safely */}
-            <span className="text-gold-metallic">CHEWY LAB</span>
+            <img
+              src={logo}
+              alt="ChewyLab Logo"
+              className="h-14 w-auto brightness-125"
+            />
+            <span className="text-2xl font-bold tracking-tight text-gold-metallic">
+              CHEWY LAB
+            </span>
           </Link>
 
           {/* RIGHT: Navigation & Cart */}
