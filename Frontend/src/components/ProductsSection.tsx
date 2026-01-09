@@ -63,11 +63,11 @@ const ProductsSection = () => {
                 >
                   <ProductCard
                     name={product.name}
-                    slug={product.name.toLowerCase().replace(/\s+/g, "-")}
-                    description={product.description ?? ""}
+                    slug={product.slug}
+                    description={product.description}
                     price={`$${product.price.toFixed(2)}`}
-                    image={product.image_url ?? "/placeholder.jpg"}
-                    category={product.categories?.name ?? "Sin categoría"}
+                    image={product.image_url}
+                    category={product.category_name}
                     isNew={false}
                   />
                 </CarouselItem>
@@ -80,7 +80,10 @@ const ProductsSection = () => {
 
         {/* Button */}
         <div className="text-center mt-12">
-          <a className="inline-flex items-center gap-2 text-gold uppercase tracking-widest text-sm">
+          <a
+            className="inline-flex items-center gap-2 text-gold uppercase tracking-widest text-sm"
+            href="/coleccion"
+          >
             Ver toda la colección →
           </a>
         </div>

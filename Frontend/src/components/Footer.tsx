@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <span className="font-display text-2xl text-gradient-gold font-semibold block mb-4">
-              CHEWYLAB
+              ChewyLab
             </span>
             <p className="text-muted-foreground text-sm font-light leading-relaxed">
               Confitería artesanal de lujo para los paladares más exigentes.

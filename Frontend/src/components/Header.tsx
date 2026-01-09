@@ -60,7 +60,7 @@ const Header = () => {
         {/* Center: Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8 justify-center">
           <a
-            href="#productos"
+            href="/coleccion"
             className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest"
           >
             Colección
@@ -144,7 +144,7 @@ const Header = () => {
         <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border/30 animate-fade-in">
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
             <a
-              href="#productos"
+              href="/coleccion"
               className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest py-2"
               onClick={() => setIsMenuOpen(false)}
             >
