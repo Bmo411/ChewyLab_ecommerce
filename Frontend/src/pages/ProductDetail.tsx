@@ -15,6 +15,8 @@ import QuantitySelector from "@/components/QuantitySelector";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { useProduct, ProductVariant } from "@/hooks/useProduct";
+import { IngredientsList } from "@/components/product/IngredientsList";
+import { NutritionFacts } from "@/components/product/NutritionFacts";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -121,6 +123,7 @@ const ProductDetail = () => {
             {/* Image Gallery */}
             <div>
               <ImageGallery images={images} productName={product.name} />
+              <NutritionFacts info={product.details.nutrition_info} />
             </div>
 
             {/* Product Info */}
@@ -167,11 +170,10 @@ const ProductDetail = () => {
                       <button
                         key={variant.id}
                         onClick={() => setSelectedVariant(variant)}
-                        className={`px-4 py-2 border rounded-md text-sm transition-all ${
-                          selectedVariant?.id === variant.id
-                            ? "border-gold bg-gold/10 text-gold font-semibold"
-                            : "border-border text-muted-foreground hover:border-gold/50"
-                        }`}
+                        className={`px-4 py-2 border rounded-md text-sm transition-all ${selectedVariant?.id === variant.id
+                          ? "border-gold bg-gold/10 text-gold font-semibold"
+                          : "border-border text-muted-foreground hover:border-gold/50"
+                          }`}
                       >
                         {variant.weight}
                       </button>
@@ -201,11 +203,10 @@ const ProductDetail = () => {
               <div className="flex gap-4 mb-10 pb-10 border-b border-border/30">
                 <button
                   onClick={() => setIsWishlisted(!isWishlisted)}
-                  className={`flex items-center gap-2 text-sm transition-colors ${
-                    isWishlisted
-                      ? "text-gold"
-                      : "text-muted-foreground hover:text-gold"
-                  }`}
+                  className={`flex items-center gap-2 text-sm transition-colors ${isWishlisted
+                    ? "text-gold"
+                    : "text-muted-foreground hover:text-gold"
+                    }`}
                 >
                   <Heart
                     className={`w-5 h-5 ${isWishlisted ? "fill-current" : ""}`}
@@ -250,47 +251,62 @@ const ProductDetail = () => {
               </div>
 
               {/* Product Details */}
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div>
                   <h3 className="font-display text-xl text-foreground mb-3">
                     Descripción
                   </h3>
-                  <div className="text-muted-foreground font-light leading-relaxed whitespace-pre-line">
+                  <div className="text-muted-foreground font-light leading-relaxed whitespace-pre-line text-lg">
                     {product.details.long_description ||
                       "Sin descripción detallada."}
                   </div>
                 </div>
 
+                {/* Ingredients */}
+                <div className="pt-6 border-t border-border/30">
+                  <h4 className="font-display text-lg text-foreground mb-4">
+                    Ingredientes
+                  </h4>
+                  {product.details.ingredients ? (
+                    <IngredientsList
+                      ingredients={product.details.ingredients}
+                    />
+                  ) : (
+                    <p className="text-muted-foreground">No especificado.</p>
+                  )}
+                </div>
+
+                {/* Additional Info Grid */}
                 <div className="grid sm:grid-cols-2 gap-6 pt-6 border-t border-border/30">
+                  {/* Storage */}
                   <div>
-                    <h4 className="text-foreground font-medium mb-2">
-                      Ingredientes
+                    <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                      <Shield className="w-4 h-4 text-gold" />
+                      Almacenamiento
                     </h4>
                     <p className="text-muted-foreground text-sm leading-relaxed">
-                      {product.details.ingredients || "No especificado."}
+                      {product.details.storage_info ||
+                        "Conservar en lugar fresco y seco."}
                     </p>
                   </div>
+
+                  {/* Usage */}
                   <div>
-                    <h4 className="text-foreground font-medium mb-2">
-                      Detalles Adicionales
+                    <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                      <Truck className="w-4 h-4 text-gold" />
+                      Sugerencia de Uso
                     </h4>
-                    <ul className="text-muted-foreground text-sm space-y-1">
-                      <li>
-                        • Información Nutricional:{" "}
-                        {product.details.nutrition_info || "N/A"}
-                      </li>
-                      <li>
-                        • Almacenamiento:{" "}
-                        {product.details.storage_info || "N/A"}
-                      </li>
-                      <li>• Uso: {product.details.usage_info || "N/A"}</li>
-                    </ul>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {product.details.usage_info ||
+                        "Ideal para compartir en fiestas o como snack."}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
       </main>
       <Footer />
     </div>

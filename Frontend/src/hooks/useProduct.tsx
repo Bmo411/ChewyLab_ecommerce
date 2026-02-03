@@ -17,13 +17,29 @@ export interface ProductImage {
   position: number;
 }
 
+
+export interface NutritionValue {
+  unit: string;
+  value: number;
+}
+
+export interface NutritionInfo {
+  sodium: NutritionValue;
+  sugars: NutritionValue;
+  protein: NutritionValue;
+  calories: number;
+  total_fat: NutritionValue;
+  total_carbohydrates: NutritionValue;
+}
+
 export interface ProductDetails {
   long_description: string | null;
   ingredients: string | null;
-  nutrition_info: string | null;
+  nutrition_info: NutritionInfo | null; // Changed from string to object
   storage_info: string | null;
   usage_info: string | null;
 }
+
 
 export interface ProductFull {
   id: string;
@@ -46,7 +62,7 @@ interface DatabaseResponse {
   categories: { name: string } | null;
   product_variants: ProductVariant[];
   product_images: ProductImage[];
-  product_details: ProductDetails[]; // One-to-one usually comes as array in joins
+  product_details: ProductDetails | ProductDetails[]; // Handle both just in case, but user log shows object
 }
 
 export function useProduct(slug: string | undefined) {
@@ -77,7 +93,7 @@ export function useProduct(slug: string | undefined) {
         )
         .eq("slug", slug)
         .eq("active", true)
-        .single(); // Use single() as we expect one product
+        .single();
 
       if (error) {
         console.error("Error fetching product:", error);
@@ -99,8 +115,16 @@ export function useProduct(slug: string | undefined) {
           (v) => v.active
         );
 
-        // Get details (usually the first one if it exists)
-        const details = dbProduct.product_details?.[0] || {
+        // Get details - handle if it's an object or array
+        let detailsData: ProductDetails | null = null;
+
+        if (Array.isArray(dbProduct.product_details)) {
+          detailsData = dbProduct.product_details[0] || null;
+        } else if (dbProduct.product_details) {
+          detailsData = dbProduct.product_details;
+        }
+
+        const details = detailsData || {
           long_description: null,
           ingredients: null,
           nutrition_info: null,
