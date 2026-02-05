@@ -15,6 +15,7 @@ import QuantitySelector from "@/components/QuantitySelector";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { useProduct, ProductVariant } from "@/hooks/useProduct";
+import { useCart } from "@/hooks/useCart";
 import { IngredientsList } from "@/components/product/IngredientsList";
 import { NutritionFacts } from "@/components/product/NutritionFacts";
 
@@ -23,6 +24,7 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const { product, loading, error } = useProduct(slug);
+  const { addToCart } = useCart();
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(
     null
   );
@@ -70,13 +72,13 @@ const ProductDetail = () => {
     );
   }
 
-  const handleAddToCart = () => {
-    if (!selectedVariant) return;
 
-    toast({
-      title: "Añadido al carrito",
-      description: `${quantity}x ${product.name} (${selectedVariant.weight}) añadido a tu carrito.`,
-    });
+
+  const handleAddToCart = async () => {
+    if (!selectedVariant || !product) return;
+
+    await addToCart(selectedVariant.id, quantity, product);
+    // Toast is handled in context
   };
 
   const handleShare = async () => {
@@ -183,7 +185,7 @@ const ProductDetail = () => {
               )}
 
               {/* Quantity & Add to Cart */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-4 mb-8">
                 <QuantitySelector
                   quantity={quantity}
                   onQuantityChange={setQuantity}
@@ -191,7 +193,7 @@ const ProductDetail = () => {
                 <Button
                   variant="hero"
                   size="xl"
-                  className="flex-1"
+                  className="w-full h-16 text-lg sm:w-auto sm:flex-1 sm:h-14 sm:text-base md:w-full md:h-16 md:text-lg lg:w-auto lg:h-14 lg:text-base"
                   onClick={handleAddToCart}
                   disabled={isOutOfStock}
                 >

@@ -14,10 +14,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdowm-menu";
 
+import { useCart } from "@/hooks/useCart";
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
   const navigate = useNavigate();
+  const { cart, setIsOpen } = useCart();
+  const itemCount = cart.items.reduce((acc, item) => acc + item.quantity, 0);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -119,11 +123,18 @@ const Header = () => {
             </Button>
           )}
 
-          <Button variant="ghost" size="icon" className="relative">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="relative"
+            onClick={() => setIsOpen(true)}
+          >
             <ShoppingBag className="h-5 w-5" />
-            <span className="absolute -top-1 -right-1 w-5 h-5 bg-gold text-primary-foreground text-xs rounded-full flex items-center justify-center font-semibold">
-              0
-            </span>
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-gold text-primary-foreground text-xs rounded-full flex items-center justify-center font-semibold animate-in zoom-in-50">
+                {itemCount}
+              </span>
+            )}
           </Button>
 
           <button

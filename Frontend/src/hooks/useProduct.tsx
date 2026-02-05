@@ -98,6 +98,17 @@ export function useProduct(slug: string | undefined) {
       if (error) {
         console.error("Error fetching product:", error);
         setError(error.message);
+        // Debug toast
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        import("@/hooks/use-toast").then(({ toast }) => {
+          toast({
+            title: "Error cargando productos (Auth)",
+            description: error.message + " " + error.details,
+            variant: "destructive",
+            duration: 5000
+          });
+        });
         setProduct(null);
       } else if (data) {
         // Transform Data
