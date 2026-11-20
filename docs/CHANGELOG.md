@@ -2,6 +2,8 @@
 
 ## 2026-11-20
 
+- Dockerfile con defaults públicos de Supabase/dominio y configuración de runtime para publicar catálogo sin capturar variables en Coolify. Sólo se incluyó la clave `anon` verificada; las claves privadas y la activación comercial siguen fuera de la imagen.
+
 - SEO adaptado de la implementación local de Uji: HTML prerenderizado por página/producto, datos públicos precargados y revalidación en el navegador.
 - Canonical, títulos/descripciones por ruta, Open Graph, Twitter Cards y JSON-LD de organización, sitio, colección, producto/ofertas y breadcrumbs.
 - `robots.txt`, sitemap dinámico de productos y `llms.txt`; noindex en cuenta, checkout, pedidos y errores, con 404 reales y control de previews.

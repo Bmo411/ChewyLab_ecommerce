@@ -16,15 +16,17 @@ El Dockerfile contiene un healthcheck ejecutado con Node contra `/health/live`. 
 
 ## Variables
 
+El Dockerfile incluye ahora los valores públicos verificados de Supabase y el dominio, además de los valores iniciales de runtime. **Para publicar el catálogo ya no es necesario capturar variables en Coolify.** Las claves privadas de Supabase/Stripe y la tarifa de envío siguen pendientes y se agregan sólo cuando se vaya a activar la compra. Si se crearon variables vacías en Coolify con estos mismos nombres, eliminarlas: un override vacío puede sustituir el valor incluido en la imagen.
+
 ### Buildtime (públicas)
 
 | Variable | Valor |
 | --- | --- |
-| `VITE_SUPABASE_URL` | URL del Supabase propio, la misma del frontend local |
-| `VITE_SUPABASE_ANON_KEY` | Clave pública actual del frontend |
+| `VITE_SUPABASE_URL` | URL pública actual incluida como valor predeterminado |
+| `VITE_SUPABASE_ANON_KEY` | Clave pública `anon` actual incluida como valor predeterminado |
 | `VITE_SITE_URL` | `https://chewylab.blueberrieslab.com` (valor predeterminado) |
 
-Marcar las variables como disponibles durante el build. El Dockerfile declara sus `ARG`; si se usa el ajuste manual de argumentos, conservar esos nombres. `VITE_API_URL` queda vacío dentro del build para usar `/api` bajo el mismo dominio. El build necesita acceso de red al catálogo público de Supabase para generar HTML por producto, robots y sitemap; no basta con configurar las claves sólo en runtime. Las variables `VITE_*` forman parte del JavaScript público; requieren reconstruir la imagen si cambian.
+Sólo si se desean cambiar estos valores, agregar overrides disponibles durante el build. El Dockerfile declara sus `ARG`; si se usa el ajuste manual de argumentos, conservar esos nombres. `VITE_API_URL` queda vacío dentro del build para usar `/api` bajo el mismo dominio. El build necesita acceso de red al catálogo público de Supabase para generar HTML por producto, robots y sitemap. Las variables `VITE_*` forman parte del JavaScript público; requieren reconstruir la imagen si cambian. La clave incluida se verificó como JWT de rol `anon` del mismo proyecto, no como `service_role`.
 
 ### Runtime
 
@@ -40,7 +42,7 @@ Marcar las variables como disponibles durante el build. El Dockerfile declara su
 | `LEGAL_PUBLICATION_CONFIRMED` | `false` |
 | `SEARCH_INDEXING_ENABLED` | `true` en el dominio público; `false` en previews |
 
-La imagen ya establece `NODE_ENV=production`, `PORT=8788` y `STATIC_DIR=/app/public`. No cambiar esas rutas/puerto sin adaptar también el routing. Las claves privadas deben estar **sólo en runtime**, con Buildtime desactivado. No usar `.env` del repositorio para producción: `.dockerignore` excluye todos los `.env`, dependencias locales y artefactos de pruebas.
+La imagen ya establece `NODE_ENV=production`, `PORT=8788`, `STATIC_DIR=/app/public`, `WEB_URL`, `SUPABASE_URL`, ambos indicadores comerciales en `false` y `SEARCH_INDEXING_ENABLED=true`. Los valores de esta tabla son overrides opcionales, salvo las claves privadas/tarifa necesarias al activar ventas. No cambiar las rutas/puerto sin adaptar también el routing. Las claves privadas deben estar **sólo en runtime**, con Buildtime desactivado; no se incluyen en el Dockerfile. No usar `.env` del repositorio para producción: `.dockerignore` excluye todos los `.env`, dependencias locales y artefactos de pruebas.
 
 ## Stripe y Supabase
 

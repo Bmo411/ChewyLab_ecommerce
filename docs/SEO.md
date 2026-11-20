@@ -29,7 +29,7 @@ Los visitantes revalidan el catálogo al cargar. El HTML de rastreo y la lista d
 
 ## Coolify
 
-1. Configurar las variables públicas como Buildtime. `VITE_API_URL` permanece vacío en la imagen porque API y tienda comparten origen. `VITE_SITE_URL` debe coincidir con `WEB_URL` y el dominio público.
+1. El Dockerfile incluye los valores públicos actuales. Sólo para cambiarlos, configurar overrides como Buildtime. `VITE_API_URL` permanece vacío en la imagen porque API y tienda comparten origen. `VITE_SITE_URL` debe coincidir con `WEB_URL` y el dominio público.
 2. Publicación principal: `SEARCH_INDEXING_ENABLED=true` (comportamiento predeterminado). Previews/staging: `false`, que añade noindex global y robots con bloqueo completo.
 3. Configurar DNS/SSL, permitir visitas públicas y revisar que el proxy de Coolify no añada otro noindex, login o bloqueo de rastreo. Revisar también firewall/WAF si se usa uno.
 4. Verificar 200 para `/robots.txt`, `/sitemap.xml`, `/llms.txt`, inicio, colección y productos. Probar 404 real para un slug inexistente y el noindex de checkout.
