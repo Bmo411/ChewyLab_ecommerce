@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
+import { useSearchParams } from 'react-router-dom';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
@@ -10,7 +11,9 @@ import { cn } from "@/lib/utils";
 const Collection = () => {
   const { products, loading: productsLoading } = useProducts();
   const { categories, loading: categoriesLoading } = useCategories();
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedCategory = searchParams.get('categoria') || 'all';
+  const setSelectedCategory = (category: string) => setSearchParams(category === 'all' ? {} : { categoria: category });
 
   const filteredProducts = useMemo(() => {
     if (selectedCategory === "all") return products;

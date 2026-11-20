@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,6 +18,9 @@ import logo from "@/assets/ChewyLablogoSinFondo.png";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const requestedReturn = params.get('returnTo');
+  const returnTo = requestedReturn && (requestedReturn === '/checkout' || requestedReturn.startsWith('/pedido-exitoso?')) ? requestedReturn : '/';
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -68,7 +71,7 @@ export default function Login() {
       });
 
       // Redirigir a la página principal
-      setTimeout(() => navigate("/"), 1000);
+      navigate(returnTo, { replace: true });
     } catch (error: any) {
       toast({
         title: "Error al iniciar sesión",

@@ -25,4 +25,6 @@ export interface CartContextType {
     removeFromCart: (itemId: string) => Promise<void>;
     updateQuantity: (itemId: string, quantity: number) => Promise<void>;
     clearCart: () => Promise<void>;
+    user: any; // Using any for now to match Context state, ideally User
+    refreshCart: () => Promise<void>;
 }

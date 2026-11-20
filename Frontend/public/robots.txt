@@ -1,0 +1,8 @@
+# Public pages are available to search engines and AI search crawlers.
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /webhooks/
+Disallow: /health
+
+Sitemap: https://chewylab.blueberrieslab.com/sitemap.xml

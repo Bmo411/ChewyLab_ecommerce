@@ -18,6 +18,7 @@ import { useProduct, ProductVariant } from "@/hooks/useProduct";
 import { useCart } from "@/hooks/useCart";
 import { IngredientsList } from "@/components/product/IngredientsList";
 import { NutritionFacts } from "@/components/product/NutritionFacts";
+import { Seo } from '@/components/Seo';
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -26,7 +27,7 @@ const ProductDetail = () => {
   const { product, loading, error } = useProduct(slug);
   const { addToCart } = useCart();
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(
-    null
+    product?.variants[0] ?? null
   );
 
   // Set default variant when product loads
@@ -106,6 +107,7 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo product={{ id: product.id, name: product.name, slug: product.slug, description: product.details.long_description, active: product.active, created_at: '', categories: { name: product.category_name }, product_variants: product.variants, product_images: product.images, product_details: product.details }} />
       <Header />
       <main className="pt-24 pb-24">
         {/* Breadcrumb */}
@@ -159,6 +161,7 @@ const ProductDetail = () => {
                   ${currentPrice.toFixed(2)}
                 </span>
                 <span className="text-muted-foreground text-sm ml-2">MXN</span>
+                {product.variants.length > 1 && <p className="text-sm text-muted-foreground mt-2">Según presentación: ${Math.min(...product.variants.map(v => v.price)).toFixed(2)} a ${Math.max(...product.variants.map(v => v.price)).toFixed(2)} MXN.</p>}
               </div>
 
               {/* Variant Selector (Weight) */}
@@ -231,7 +234,7 @@ const ProductDetail = () => {
                     <Truck className="w-5 h-5 text-gold" />
                   </div>
                   <span className="text-xs text-muted-foreground uppercase tracking-wider">
-                    Envío Express
+                    Envío a México
                   </span>
                 </div>
                 <div className="text-center">
@@ -247,7 +250,7 @@ const ProductDetail = () => {
                     <RotateCcw className="w-5 h-5 text-gold" />
                   </div>
                   <span className="text-xs text-muted-foreground uppercase tracking-wider">
-                    Garantía
+                    Ingredientes
                   </span>
                 </div>
               </div>

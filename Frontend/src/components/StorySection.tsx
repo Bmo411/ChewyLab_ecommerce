@@ -26,49 +26,19 @@ const StorySection = () => {
 
             <div className="space-y-6 text-muted-foreground font-light leading-relaxed">
               <p>
-                Desde 2025, ChewyLab ha redefinido el concepto de gomitas de
-                lujo. Nuestro compromiso con la excelencia nos ha llevado a
-                cuidar nuestros procesos y gomitas con todo el amor del mundo.
+                ChewyLab reúne gomitas y mezclas de sabor en una colección
+                que puedes explorar por producto y presentación.
               </p>
               <p>
-                Cada sabor es elaborado a mano utilizando técnicas tradicionales
-                combinadas con innovación culinaria, garantizando una
-                experiencia sensorial incomparable.
+                Descubre perfiles ácidos, picantes y botánicos, y elige
+                la presentación que prefieras para compartir.
               </p>
               <p>
-                Utilizamos únicamente ingredientes de la más alta calidad:
-                extractos de frutas orgánicas, miel de origen controlado y
-                colorantes naturales derivados de plantas.
+                Consulta los ingredientes, la información nutrimental y las
+                recomendaciones de conservación en la ficha de cada producto.
               </p>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-border/30">
-              <div>
-                <span className="font-display text-4xl text-gold block mb-2">
-                  50+
-                </span>
-                <span className="text-muted-foreground text-sm uppercase tracking-widest">
-                  Sabores
-                </span>
-              </div>
-              <div>
-                <span className="font-display text-4xl text-gold block mb-2">
-                  12
-                </span>
-                <span className="text-muted-foreground text-sm uppercase tracking-widest">
-                  Países
-                </span>
-              </div>
-              <div>
-                <span className="font-display text-4xl text-gold block mb-2">
-                  100%
-                </span>
-                <span className="text-muted-foreground text-sm uppercase tracking-widest">
-                  Orgánico
-                </span>
-              </div>
-            </div>
           </div>
 
           {/* Visual Element */}
@@ -88,7 +58,7 @@ const StorySection = () => {
                     ChewyLab
                   </span>
                   <span className="text-muted-foreground text-sm uppercase tracking-[0.3em]">
-                    Est. 2025
+                    Colección de sabores
                   </span>
                 </div>
               </div>

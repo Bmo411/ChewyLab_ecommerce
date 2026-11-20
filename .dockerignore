@@ -1,0 +1,14 @@
+.git
+.agents
+.codex
+**/node_modules
+**/dist
+**/dist-ssr
+**/.env
+**/.env.*
+**/*.log
+**/coverage
+**/test-results
+**/playwright-report
+Frontend/e2e
+api/test

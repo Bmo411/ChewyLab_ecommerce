@@ -92,13 +92,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         setIsLoading(true);
         try {
             // Get cart ID
-            let { data: cartData, error: cartError } = await supabase
+            const { data: existingCart, error: cartError } = await supabase
                 .from('carts')
                 .select('id')
                 .eq('user_id', userId)
                 .maybeSingle();
 
             if (cartError) throw cartError;
+            let cartData = existingCart;
 
             if (!cartData) {
                 // Create cart if not exists
@@ -439,7 +440,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             addToCart,
             removeFromCart,
             updateQuantity,
-            clearCart
+            clearCart,
+            user,
+            refreshCart: async () => {
+                if (user) await fetchSupabaseCart(user.id);
+                else loadLocalCart();
+            }
         }}>
             {children}
         </CartContext.Provider>

@@ -1,31 +1,24 @@
-import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabase";
-
-export interface Category {
-  id: string;
-  name: string;
-}
+import { useEffect, useState } from 'react';
+import { supabase } from '@/lib/supabase';
+import { getPreloadedData } from '@/lib/preloaded';
+import type { Category } from '@/lib/catalog';
+export type { Category } from '@/lib/catalog';
 
 export function useCategories() {
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [loading, setLoading] = useState(true);
+  const initial = getPreloadedData();
+  const [categories, setCategories] = useState<Category[]>(() => initial?.categories || []);
+  const [loading, setLoading] = useState(!initial);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
+    let cancelled = false;
     const fetchCategories = async () => {
-      setLoading(true);
-      const { data, error } = await supabase.from("categories").select("*");
-
-      if (error) {
-        setError(error.message);
-      } else {
-        setCategories(data ?? []);
-      }
+      const { data, error } = await supabase.from('categories').select('id,name');
+      if (cancelled) return;
+      if (error) setError('No se pudieron actualizar las categorías.'); else setCategories(data || []);
       setLoading(false);
     };
-
-    fetchCategories();
+    void fetchCategories();
+    return () => { cancelled = true; };
   }, []);
-
   return { categories, loading, error };
 }

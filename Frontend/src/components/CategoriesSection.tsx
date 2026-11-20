@@ -1,8 +1,11 @@
 import { Flame, Zap, Heart } from "lucide-react";
 import { CategoryCard } from "./CategoryCard";
 import { GoldText } from "./GoldText";
+import { useCategories } from '@/hooks/useCategories';
 
 const CategoriesSection = () => {
+  const { categories } = useCategories();
+  const icons = [Flame, Zap, Heart];
   return (
     <section
       id="categories"
@@ -27,24 +30,7 @@ const CategoriesSection = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <CategoryCard
-            title="Spicy Lab"
-            icon={Flame}
-            description="Explosión de sabor con un toque picante gourmet. Mantiene el equilibrio perfecto entre calor y dulzura."
-            href="#"
-          />
-          <CategoryCard
-            title="Sour Lab"
-            icon={Zap}
-            description="Notas aciduladas que despiertan los sentidos. Una experiencia vibrante que evoluciona en el paladar."
-            href="#"
-          />
-          <CategoryCard
-            title="Sweet Lab"
-            icon={Heart}
-            description="La dulzura clásica elevada a la perfección. Texturas suaves y sabores profundos para el alma."
-            href="#"
-          />
+          {categories.map((category, index) => <CategoryCard key={category.id} title={category.name} icon={icons[index % icons.length]} description={`Explora los productos y presentaciones de ${category.name}.`} href={`/coleccion?categoria=${encodeURIComponent(category.name)}`} />)}
         </div>
       </div>
       <br />

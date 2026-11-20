@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero.jpg";
 import { GoldText } from "./GoldText";
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -44,11 +45,11 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-4 animate-fade-up"
             style={{ animationDelay: "0.8s" }}
           >
-            <Button variant="gold" size="xl">
-              Explorar Colección
+            <Button variant="gold" size="xl" asChild>
+              <Link to="/coleccion">Explorar Colección</Link>
             </Button>
-            <Button variant="luxe" size="xl">
-              Nuestra Historia
+            <Button variant="luxe" size="xl" asChild>
+              <a href="/#historia">Nuestra Historia</a>
             </Button>
           </div>
         </div>

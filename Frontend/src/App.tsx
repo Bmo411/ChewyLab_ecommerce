@@ -4,12 +4,15 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { CartProvider } from "./context/CartContext";
 import { CartDrawer } from "./components/cart/CartDrawer";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { Seo } from './components/Seo';
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Collection from "./pages/Collection";
+import Checkout from "./pages/Checkout";
+import OrderSuccess from "./pages/OrderSuccess";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -21,7 +24,8 @@ const App = () => (
       <Toaster />
       <Sooner />
       <CartProvider>
-        <BrowserRouter>
+        <>
+          <Seo />
           <ScrollToTop />
           <CartDrawer />
           <Routes>
@@ -30,10 +34,12 @@ const App = () => (
             <Route path="/producto/:slug" element={<ProductDetail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/pedido-exitoso" element={<OrderSuccess />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
+        </>
       </CartProvider>
     </TooltipProvider>
   </QueryClientProvider>

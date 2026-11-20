@@ -1,4 +1,4 @@
-import { ArrowRight, Flame, Leaf, Zap } from "lucide-react";
+import { Flame, Leaf, Zap } from "lucide-react";
 import HeroSection from "../components/HeroSection";
 
 export default function Home() {

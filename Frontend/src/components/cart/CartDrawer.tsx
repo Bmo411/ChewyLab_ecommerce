@@ -3,15 +3,16 @@ import {
     SheetContent,
     SheetHeader,
     SheetTitle,
-    SheetFooter,
 } from "@/components/ui/sheet";
 import { useCart } from "@/hooks/useCart";
 import { CartItem } from "./CartItem";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const CartDrawer = () => {
     const { cart, isOpen, setIsOpen, isLoading } = useCart();
+    const navigate = useNavigate();
 
     // Safety check just in case cart is undefined
     const items = cart?.items || [];
@@ -48,7 +49,7 @@ export const CartDrawer = () => {
                                 El carrito está vacío
                             </h3>
                             <p className="text-sm text-muted-foreground w-2/3 mx-auto">
-                                ¡Agrega productos deliciosos para tu mascota!
+                                Agrega tus gomitas favoritas a la colección.
                             </p>
                             <Button
                                 variant="outline"
@@ -88,7 +89,13 @@ export const CartDrawer = () => {
                             </p>
                         </div>
 
-                        <Button className="w-full bg-gold hover:bg-gold/90 text-primary-foreground h-12 text-base font-semibold tracking-wide">
+                        <Button
+                            className="w-full bg-gold hover:bg-gold/90 text-primary-foreground h-12 text-base font-semibold tracking-wide"
+                            onClick={() => {
+                                setIsOpen(false);
+                                navigate('/checkout');
+                            }}
+                        >
                             Finalizar Compra
                         </Button>
                     </div>

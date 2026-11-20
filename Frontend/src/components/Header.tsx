@@ -15,12 +15,14 @@ import {
 } from "@/components/ui/dropdowm-menu";
 
 import { useCart } from "@/hooks/useCart";
+import { useToast } from "@/hooks/use-toast";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
   const navigate = useNavigate();
   const { cart, setIsOpen } = useCart();
+  const { toast } = useToast();
   const itemCount = cart.items.reduce((acc, item) => acc + item.quantity, 0);
 
   useEffect(() => {
@@ -38,7 +40,12 @@ const Header = () => {
   }, []);
 
   const handleLogout = async () => {
+    setUser(null);
     await supabase.auth.signOut();
+    toast({
+      title: "Sesión cerrada",
+      description: "Has cerrado sesión exitosamente",
+    });
     navigate("/");
   };
 
@@ -70,16 +77,16 @@ const Header = () => {
             Colección
           </a>
           <a
-            href="#historia"
+            href="/#historia"
             className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest"
           >
             Historia
           </a>
           <a
-            href="#contacto"
+            href="/coleccion"
             className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest"
           >
-            Contacto
+            Ingredientes
           </a>
         </div>
 
@@ -162,18 +169,18 @@ const Header = () => {
               Colección
             </a>
             <a
-              href="#historia"
+              href="/#historia"
               className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Historia
             </a>
             <a
-              href="#contacto"
+              href="/coleccion"
               className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Contacto
+              Ingredientes
             </a>
           </div>
         </div>

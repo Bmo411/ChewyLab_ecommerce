@@ -1,0 +1,15 @@
+{
+  "name": "chewylab-commerce",
+  "private": true,
+  "engines": { "node": "^22.12.0 || >=24.0.0" },
+  "scripts": {
+    "install:all": "npm ci --prefix api && npm ci --prefix Frontend",
+    "dev:api": "npm run dev --prefix api",
+    "dev:web": "npm run dev --prefix Frontend",
+    "build": "npm run build --prefix Frontend && npm run check --prefix api",
+    "test": "npm test --prefix api",
+    "test:e2e": "npm run test:e2e --prefix Frontend",
+    "test:seo": "npm run test:seo --prefix Frontend",
+    "lint": "npm run lint --prefix Frontend && npm run check --prefix api"
+  }
+}
