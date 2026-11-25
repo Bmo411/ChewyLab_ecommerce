@@ -74,7 +74,7 @@ const Checkout = () => {
     return (
         <div className="min-h-screen bg-background">
             <Header />
-            <main className="container mx-auto px-4 py-8 lg:px-8 mt-20">
+            <main id="contenido" className="container mx-auto px-4 py-8 lg:px-8 mt-20">
 
                 <div className="mb-8">
                     <Link to="/coleccion" className="flex items-center text-sm text-muted-foreground hover:text-foreground">

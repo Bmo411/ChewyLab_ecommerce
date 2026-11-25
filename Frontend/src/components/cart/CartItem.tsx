@@ -2,6 +2,7 @@ import { CartItem as CartItemType } from "@/types/cart.types";
 import { useCart } from "@/hooks/useCart";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { formatWeight } from '@/lib/catalog';
 
 interface CartItemProps {
     item: CartItemType;
@@ -33,7 +34,7 @@ export const CartItem = ({ item }: CartItemProps) => {
                             ${(item.price * item.quantity).toFixed(2)}
                         </p>
                     </div>
-                    <p className="mt-1 text-xs text-muted-foreground">{item.weight}</p>
+                    <p className="mt-1 technical-label text-muted-foreground">{formatWeight(item.weight)}</p>
                 </div>
 
                 <div className="flex items-center justify-between mt-2">

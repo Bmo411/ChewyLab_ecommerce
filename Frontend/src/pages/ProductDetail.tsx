@@ -19,6 +19,7 @@ import { useCart } from "@/hooks/useCart";
 import { IngredientsList } from "@/components/product/IngredientsList";
 import { NutritionFacts } from "@/components/product/NutritionFacts";
 import { Seo } from '@/components/Seo';
+import { formatWeight } from '@/lib/catalog';
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -42,7 +43,7 @@ const ProductDetail = () => {
     return (
       <div className="min-h-screen bg-background">
         <Header />
-        <main className="pt-32 pb-24 text-center">
+        <main id="contenido" className="pt-32 pb-24 text-center">
           <div className="animate-pulse">Cargando producto...</div>
         </main>
         <Footer />
@@ -54,7 +55,7 @@ const ProductDetail = () => {
     return (
       <div className="min-h-screen bg-background">
         <Header />
-        <main className="pt-32 pb-24">
+        <main id="contenido" className="pt-32 pb-24">
           <div className="container mx-auto px-6 text-center">
             <h1 className="font-display text-4xl text-foreground mb-4">
               Producto no encontrado
@@ -109,7 +110,7 @@ const ProductDetail = () => {
     <div className="min-h-screen bg-background">
       <Seo product={{ id: product.id, name: product.name, slug: product.slug, description: product.details.long_description, active: product.active, created_at: '', categories: { name: product.category_name }, product_variants: product.variants, product_images: product.images, product_details: product.details }} />
       <Header />
-      <main className="pt-24 pb-24">
+      <main id="contenido" className="pt-24 pb-24">
         {/* Breadcrumb */}
         <div className="container mx-auto px-6 py-6">
           <Link
@@ -180,7 +181,7 @@ const ProductDetail = () => {
                           : "border-border text-muted-foreground hover:border-gold/50"
                           }`}
                       >
-                        {variant.weight}
+                        {formatWeight(variant.weight)}
                       </button>
                     ))}
                   </div>

@@ -1,5 +1,15 @@
 # Cambios
 
+## 2026-11-25
+
+- Contenido basado en el manual de identidad del propietario: sátira elegante, Montserrat, paleta oficial, oro plano y datos técnicos en monoespaciada.
+- Diez páginas informativas con navegación y footer: manifiesto, laboratorios, ingredientes, preguntas, envíos, contacto, cookies y tres políticas preliminares.
+- Contacto confirmado: correo y WhatsApp publicados. Sin plazos ni tarifas de envío inventados.
+- Extensión de prerender, metadatos, sitemap y llms; políticas en revisión con HTML propio y noindex. Hosting distingue páginas renderizadas e indexables.
+- Formato legible de gramajes, tabla nutrimental desplegable, nombres de categoría normalizados y controles de navegación con etiquetas accesibles.
+- Se mantienen productos, precios, inventario y variantes existentes. Coconut/Botanical se presentan sin venta activa; no se habilitan Lab Box, suscripciones o cobros reales.
+- Validación: 24 pruebas API/SQL/hosting, 4 pruebas HTML/SEO y 20 casos de navegador aprobados; revisión visual y de rutas editoriales en escritorio/móvil.
+
 ## 2026-11-20
 
 - Dockerfile con defaults públicos de Supabase/dominio y configuración de runtime para publicar catálogo sin capturar variables en Coolify. Sólo se incluyó la clave `anon` verificada; las claves privadas y la activación comercial siguen fuera de la imagen.

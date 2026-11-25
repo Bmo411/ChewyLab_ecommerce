@@ -66,7 +66,7 @@ export default function Login() {
       if (error) throw error;
 
       toast({
-        title: "¡Bienvenido!",
+        title: "Acceso confirmado",
         description: `Has iniciado sesión como ${data.user.email}`,
       });
 
@@ -129,7 +129,7 @@ export default function Login() {
           <img
             src={logo}
             alt="ChewyLab Logo"
-            className="h-32 w-auto animate-float"
+            className="h-28 w-auto"
           />
         </div>
 
@@ -139,7 +139,7 @@ export default function Login() {
               Iniciar Sesión
             </CardTitle>
             <CardDescription className="text-center text-muted-foreground">
-              Ingresa tus credenciales para continuar
+              Tu expediente de antojos empieza con un correo.
             </CardDescription>
           </CardHeader>
           <form onSubmit={handleSubmit}>

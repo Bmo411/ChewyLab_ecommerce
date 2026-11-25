@@ -23,7 +23,7 @@ Revisión de código local: 2026-11-20. La comparación no acredita que las func
 2. Falta `SUPABASE_SERVICE_ROLE_KEY` en API. La clave `VITE_SUPABASE_ANON_KEY` sólo sirve para el navegador y no debe usarse para procesar pagos.
 3. Cuenta propia de Stripe, claves test/live, destino de webhook y compra de aceptación pendientes.
 4. Dominio ya definido, pero hosting, DNS y SSL no verificados ni modificados.
-5. Faltan políticas públicas, contacto real, tarifas/plazos y revisión del contenido alimentario. Se retiraron del footer los enlaces y datos de contacto de muestra; no se inventaron sustitutos.
+5. Desde 2026-11-25 hay páginas informativas y contacto confirmado por el propietario. Privacidad, condiciones e incidencias permanecen en revisión; faltan identidad/domicilio del responsable, condiciones finales, tarifas/plazos y revisión del contenido alimentario. No se inventaron datos para completar esos campos.
 6. Newsletter sin persistencia fue retirada del sitio visible; su código queda disponible para una integración futura.
 
 ## Prioridad sugerida

@@ -8,6 +8,7 @@ Se revisaron `UjiStandar/web/public/robots.txt`, `src/components/Seo.tsx`, `src/
 
 - `Frontend/public/robots.txt` permite rastrear páginas públicas y recursos. La regla genérica incluye Googlebot, Bingbot y OAI-SearchBot. Bloquea rastreo de API, webhooks y healthchecks; no sustituye la autenticación.
 - Cada build obtiene únicamente el catálogo público de Supabase y genera HTML completo para inicio, colección y cada producto activo. Los tres productos actuales son visibles sin JavaScript, con ingredientes y presentaciones.
+- Desde 2026-11-25 también se generan las páginas editoriales de marca, ayuda, contacto y cookies. Privacidad, condiciones e incidencias se sirven como documentos preliminares con noindex y fuera del sitemap; se mantienen accesibles desde el footer.
 - `sitemap.xml` se genera con las URLs públicas reales, sin fechas de modificación inventadas. Cuenta, checkout y confirmación de pedidos quedan fuera.
 - Títulos, descripción, canonical, Open Graph y Twitter Cards son específicos de cada página y se actualizan al navegar. Las páginas públicas usan el dominio configurado, sin parámetros de campaña o filtros en el canonical.
 - JSON-LD: Organization, WebSite, CollectionPage/ItemList, Product/AggregateOffer y BreadcrumbList. Los precios provienen del mismo catálogo que el contenido visible; no se inventan reseñas, certificaciones, devolución o envío gratuito.
@@ -19,7 +20,7 @@ Se revisaron `UjiStandar/web/public/robots.txt`, `src/components/Seo.tsx`, `src/
 
 ## Contenido y enlaces
 
-Se conectaron botones de inicio y categorías con URLs reales. Las categorías del inicio provienen de Supabase y filtran la colección mediante `?categoria=...`, cuya canonical permanece en `/coleccion`. Se retiraron del sitio visible los contactos de muestra, enlaces vacíos del footer, cifras/afirmaciones sin respaldo y el formulario de newsletter que no guardaba suscripciones. No se agregaron políticas ni contactos ficticios: siguen pendientes para activar ventas.
+Se conectaron botones de inicio y categorías con URLs reales. Las categorías del inicio provienen de Supabase y filtran la colección mediante `?categoria=...`, cuya canonical permanece en `/coleccion`. Se retiraron los contactos de muestra, enlaces vacíos y cifras/afirmaciones sin respaldo. El 2026-11-25 se incorporaron correo y WhatsApp confirmados por el propietario y páginas informativas basadas en el manual de marca. La identidad legal y las condiciones finales siguen pendientes antes de activar ventas.
 
 ## Build y actualización de catálogo
 

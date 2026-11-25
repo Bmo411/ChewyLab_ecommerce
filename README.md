@@ -1,6 +1,6 @@
 🍬 Chewy Lab | E-commerce Platform
 
-## Estado técnico y despliegue (2026-11-20)
+## Estado técnico y despliegue (2026-11-25)
 
 La integración Stripe ya está en el código: `api/` crea el Checkout alojado, valida la sesión Supabase y confirma pedidos por webhook; `supabase/` contiene el esquema para proyecto vacío y la migración aditiva de pagos. No está activada en producción.
 
@@ -10,6 +10,7 @@ Dominio previsto: **https://chewylab.blueberrieslab.com**, con Stripe y Supabase
 - [Configuración y despliegue paso a paso](docs/DEPLOYMENT.md)
 - [Despliegue en Coolify con Dockerfile](docs/COOLIFY.md)
 - [SEO, sitemap y acceso de buscadores e IA](docs/SEO.md)
+- [Identidad de marca y páginas informativas](docs/BRAND.md)
 - [Cambios de esta revisión](docs/CHANGELOG.md)
 
 Desde la raíz: `npm run install:all`, `npm run dev:api`, `npm run dev:web`. Validación: `npm run build`, `npm run lint`, `npm test`.

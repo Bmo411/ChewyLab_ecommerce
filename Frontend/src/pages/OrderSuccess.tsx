@@ -55,7 +55,7 @@ export default function OrderSuccess() {
   }, [order?.id]);
 
   return <div className="min-h-screen bg-background"><Header />
-    <main className="container mx-auto px-6 pt-32 pb-20 max-w-2xl">
+    <main id="contenido" className="container mx-auto px-6 pt-32 pb-20 max-w-2xl">
       <h1 className="text-3xl font-display mb-6">{order ? '¡Tu pedido está confirmado!' : 'Confirmación de tu pedido'}</h1>
       {!sessionId ? <p>No encontramos una sesión de pago en este enlace.</p> : order ? <>
         <p className="mb-4 break-all">Folio: {order.id}</p>

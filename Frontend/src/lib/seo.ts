@@ -1,5 +1,6 @@
 import type { CatalogSnapshot } from './catalog';
 import { toProduct } from './catalog';
+import { editorialPages, brand } from './editorial';
 
 export const DEFAULT_SITE_URL = 'https://chewylab.blueberrieslab.com';
 export const cleanText = (text: unknown) => String(text ?? '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -12,19 +13,21 @@ export function resolveSeo(pathname: string, data: CatalogSnapshot | null, siteU
   const path = pathname.replace(/\/+$/, '') || '/';
   const row = data?.products.find(p => productPath(p.slug) === path);
   const isProduct = path.startsWith('/producto/');
-  const publicPage = path === '/' || path === '/coleccion' || Boolean(row);
-  const privatePage = ['/login', '/register', '/checkout', '/pedido-exitoso'].includes(path);
+  const editorial = editorialPages[path];
+  const publicPage = path === '/' || path === '/coleccion' || Boolean(row) || Boolean(editorial && !editorial.review);
+  const privatePage = ['/login', '/register', '/checkout', '/pedido-exitoso'].includes(path) || Boolean(editorial?.review);
   let title = 'Página no encontrada | ChewyLab';
   let description = 'La página solicitada no está disponible. Explora la colección de ChewyLab.';
-  if (path === '/') { title = 'ChewyLab | Gomitas artesanales y mezclas de sabor'; description = 'Descubre ChewyLab: gomitas en mezclas ácidas, picantes y botánicas. Explora presentaciones, ingredientes y precios en nuestra colección.'; }
+  if (path === '/') { title = 'Chewy Lab | Gourmet Gummy Co. · Guadalajara'; description = 'Más que una gomita, o eso queremos que creas. Explora Chewy Lab: confitería de Guadalajara, diseño sobrio y perfiles de sabor con sentido del humor.'; }
   if (path === '/coleccion') { title = 'Colección de gomitas y presentaciones | ChewyLab'; description = 'Explora la colección de ChewyLab. Consulta mezclas, presentaciones, precios e ingredientes de nuestras gomitas.'; }
   if (row) { title = `${row.name} | Gomitas ChewyLab`; description = (cleanText(row.description || toProduct(row).details.long_description) || `Conoce ${row.name} de ChewyLab: presentaciones, ingredientes y disponibilidad.`).slice(0, 160); }
-  if (privatePage) { title = `${({ '/login': 'Iniciar sesión', '/register': 'Crear cuenta', '/checkout': 'Checkout', '/pedido-exitoso': 'Confirmación de pedido' } as Record<string, string>)[path]} | ChewyLab`; description = 'Acceso y gestión de tu compra en ChewyLab.'; }
+  if (privatePage && !editorial) { title = `${({ '/login': 'Iniciar sesión', '/register': 'Crear cuenta', '/checkout': 'Checkout', '/pedido-exitoso': 'Confirmación de pedido' } as Record<string, string>)[path]} | ChewyLab`; description = 'Acceso y gestión de tu compra en ChewyLab.'; }
+  if (editorial) { title = `${editorial.title} | Chewy Lab`; description = editorial.description; }
   const image = row ? absolute(toProduct(row).images[0]?.image_url || '/social-card.jpg', site) : `${site}/social-card.jpg`;
   const canonical = publicPage ? `${site}${path === '/' ? '/' : path}` : null;
   const graph: Record<string, unknown>[] = [];
   if (publicPage) {
-    graph.push({ '@type': 'Organization', '@id': `${site}/#organization`, name: 'ChewyLab', url: `${site}/`, logo: `${site}/brand-logo.png` });
+    graph.push({ '@type': 'Organization', '@id': `${site}/#organization`, name: brand.name, url: `${site}/`, logo: `${site}/brand-logo.png` });
     graph.push({ '@type': 'WebSite', '@id': `${site}/#website`, name: 'ChewyLab', url: `${site}/`, inLanguage: 'es-MX', publisher: { '@id': `${site}/#organization` } });
   }
   if (row) {
@@ -37,5 +40,6 @@ export function resolveSeo(pathname: string, data: CatalogSnapshot | null, siteU
   } else if (path === '/coleccion' && data) {
     graph.push({ '@type': 'CollectionPage', name: 'Colección ChewyLab', url: canonical, mainEntity: { '@type': 'ItemList', itemListElement: data.products.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.name, url: `${site}${productPath(p.slug)}` })) } });
   }
+  if (editorial && publicPage) graph.push({ '@type': path === '/manifiesto' ? 'AboutPage' : path === '/contacto' ? 'ContactPage' : 'WebPage', name: editorial.title, description: editorial.description, url: canonical, inLanguage: 'es-MX', isPartOf: { '@id': `${site}/#website` } });
   return { title, description, canonical, image, robots: publicPage ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' : 'noindex, nofollow', type: row ? 'product' : 'website', notFound: !publicPage && !privatePage, productMissing: isProduct && !row, structuredData: graph.length ? { '@context': 'https://schema.org', '@graph': graph } : null };
 }

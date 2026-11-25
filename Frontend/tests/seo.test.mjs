@@ -56,3 +56,17 @@ test('sitemap sólo lista URLs públicas y robots permite rastreo del catálogo 
   const llms = await readFile(resolve(dist, 'llms.txt'), 'utf8');
   for (const path of manifest.productPaths) assert.ok(llms.includes(manifest.site + path));
 });
+
+test('las políticas en revisión tienen HTML propio y no se anuncian como páginas indexables', async () => {
+  for(const path of ['/privacidad','/terminos','/devoluciones']) {
+    assert.ok(manifest.pagePaths.includes(path));
+    assert.ok(manifest.noindexPaths.includes(path));
+    assert.ok(!manifest.paths.includes(path));
+    const html=await readPage(path);
+    assert.match(html,/Información preliminar/);
+    assert.match(html,/name="robots" content="noindex, nofollow"/);
+  }
+  const contact=await readPage('/contacto');
+  assert.match(contact,/href="mailto:oceguedaalejandro12@gmail.com"/);
+  assert.match(contact,/href="https:\/\/wa\.me\/523112048692"/);
+});

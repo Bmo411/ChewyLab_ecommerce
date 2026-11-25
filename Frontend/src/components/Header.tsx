@@ -1,9 +1,9 @@
 import { ShoppingBag, Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { GoldText } from "./GoldText";
 import logo from "../assets/ChewyLablogoSinFondo.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link, NavLink } from "react-router-dom";
+import { navigation, brand } from '@/lib/editorial';
 import { supabase } from "@/lib/supabase";
 import {
   DropdownMenu,
@@ -50,44 +50,28 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/30">
-      <nav className="container mx-auto px-6 py-4 flex items-center h-18">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border">
+      <a href="#contenido" className="skip-link">Saltar al contenido</a>
+      <nav aria-label="Navegación principal" className="container mx-auto px-6 flex items-center h-16">
         {/* Left: Logo */}
         <div className="flex-1 flex justify-start">
-          <a href="/" className="flex items-center">
-            <div className="h-14 w-14 flex items-center justify-center overflow-hidden">
+          <Link to="/" aria-label="Chewy Lab, inicio" className="flex items-center gap-2">
+            <div className="h-10 w-10 flex items-center justify-center overflow-hidden">
               <img
                 src={logo}
-                alt="Logo"
-                className="h-full w-full object-contain scale-150 brightness-125"
+                alt=""
+                className="h-24 w-24 max-w-none object-contain"
               />
             </div>
-            <span className="font-display text-2xl md:text-3xl text-gradient-gold font-semibold tracking-wide">
-              <GoldText>ChewyLab</GoldText>
+            <span className="font-display text-lg sm:text-xl font-bold tracking-[-0.01em]">
+              {brand.name}
             </span>
-          </a>
+          </Link>
         </div>
 
         {/* Center: Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8 justify-center">
-          <a
-            href="/coleccion"
-            className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest"
-          >
-            Colección
-          </a>
-          <a
-            href="/#historia"
-            className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest"
-          >
-            Historia
-          </a>
-          <a
-            href="/coleccion"
-            className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest"
-          >
-            Ingredientes
-          </a>
+        <div className="hidden lg:flex items-center gap-7 justify-center">
+          {navigation.map(item => <NavLink key={item.path} to={item.path} className={({ isActive }) => `brand-kicker transition-colors hover:text-gold ${isActive ? 'text-gold' : 'text-foreground/80'}`}>{item.label}</NavLink>)}
         </div>
 
         {/* Right: Cart & Mobile Menu */}
@@ -95,7 +79,7 @@ const Header = () => {
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" aria-label="Abrir mi cuenta">
                   <User className="h-5 w-5" />
                 </Button>
               </DropdownMenuTrigger>
@@ -124,6 +108,7 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
+              aria-label="Iniciar sesión"
               onClick={() => navigate("/login")}
             >
               <User className="h-5 w-5" />
@@ -134,6 +119,7 @@ const Header = () => {
             variant="ghost"
             size="icon"
             className="relative"
+            aria-label={`Abrir carrito, ${itemCount} productos`}
             onClick={() => setIsOpen(true)}
           >
             <ShoppingBag className="h-5 w-5" />
@@ -145,7 +131,10 @@ const Header = () => {
           </Button>
 
           <button
-            className="md:hidden text-foreground"
+            className="lg:hidden text-foreground"
+            aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
@@ -159,29 +148,9 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border/30 animate-fade-in">
+        <div id="mobile-navigation" className="lg:hidden bg-background border-t border-border">
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
-            <a
-              href="/coleccion"
-              className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Colección
-            </a>
-            <a
-              href="/#historia"
-              className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Historia
-            </a>
-            <a
-              href="/coleccion"
-              className="text-foreground/80 hover:text-gold transition-colors font-body text-sm uppercase tracking-widest py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Ingredientes
-            </a>
+            {navigation.map(item => <NavLink key={item.path} to={item.path} onClick={() => setIsMenuOpen(false)} className={({ isActive }) => `brand-kicker py-3 transition-colors hover:text-gold ${isActive ? 'text-gold' : 'text-foreground/80'}`}>{item.label}</NavLink>)}
           </div>
         </div>
       )}

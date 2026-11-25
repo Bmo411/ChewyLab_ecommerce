@@ -24,8 +24,7 @@ const CategoriesSection = () => {
             Explora nuestros <GoldText>Laboratorios</GoldText>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed font-light">
-            Tres experiencias únicas diseñadas para despertar cada uno de tus
-            sentidos.
+            Perfiles de sabor con nombres propios. La expresión facial corre por tu cuenta.
           </p>
         </div>
 

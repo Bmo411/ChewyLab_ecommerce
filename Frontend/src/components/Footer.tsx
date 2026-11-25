@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
+import { brand, contact } from '@/lib/editorial';
 
+const columns = [
+  { title: 'El laboratorio', links: [['Colección','/coleccion'],['Laboratorios','/laboratorios'],['Manifiesto','/manifiesto'],['Ingredientes','/ingredientes']] },
+  { title: 'Atención', links: [['Preguntas frecuentes','/preguntas-frecuentes'],['Envíos','/envios'],['Contacto','/contacto'],['Incidencias','/devoluciones']] },
+  { title: 'Información', links: [['Privacidad','/privacidad'],['Condiciones de compra','/terminos'],['Cookies y almacenamiento','/cookies']] },
+];
 export default function Footer() {
-  return <footer className="bg-card border-t border-border/30 py-14">
-    <div className="container mx-auto px-6">
-      <div className="grid gap-10 md:grid-cols-3 mb-10">
-        <div><Link to="/" className="font-display text-2xl text-gradient-gold font-semibold">ChewyLab</Link><p className="mt-4 text-sm text-muted-foreground">Gomitas y mezclas de sabor. Consulta presentaciones e ingredientes en cada producto.</p></div>
-        <nav aria-label="Colección"><h2 className="font-display text-lg mb-4">Explora ChewyLab</h2><ul className="space-y-3 text-sm text-muted-foreground"><li><Link to="/coleccion" className="hover:text-gold">Ver colección</Link></li><li><a href="/#historia" className="hover:text-gold">Nuestra historia</a></li></ul></nav>
-        <div><h2 className="font-display text-lg mb-4">Información de producto</h2><p className="text-sm text-muted-foreground">Las fichas de la colección incluyen ingredientes, conservación y presentaciones disponibles.</p></div>
-      </div>
-      <p className="border-t border-border/30 pt-6 text-xs text-muted-foreground">© {new Date().getFullYear()} ChewyLab. Todos los derechos reservados.</p>
-    </div>
-  </footer>;
+  return <footer className="bg-background border-t border-border py-14 md:py-20"><div className="container mx-auto px-6">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 lg:gap-12 mb-16"><div><Link to="/" className="font-bold text-2xl tracking-[-0.01em]">{brand.name}</Link><p className="brand-kicker mt-3 mb-6">{brand.descriptor}</p><p className="text-sm text-muted-foreground leading-relaxed max-w-xs">{brand.motto}</p><p className="technical-label text-gold mt-7">GUADALAJARA / MX</p>{contact.email && <a href={`mailto:${contact.email}`} className="block text-xs text-muted-foreground hover:text-foreground break-all mt-5">{contact.email}</a>}</div>{columns.map(column=><nav key={column.title} aria-label={column.title}><h2 className="brand-kicker mb-6">{column.title}</h2><ul className="space-y-4 text-sm text-muted-foreground">{column.links.map(([label,path])=><li key={path}><Link to={path} className="hover:text-foreground transition-colors">{label}</Link></li>)}</ul></nav>)}</div>
+    <div className="border-t border-border pt-6 flex flex-col md:flex-row gap-3 justify-between text-xs text-muted-foreground"><p>© {new Date().getFullYear()} {brand.name}.</p><p className="technical-label">EL DISEÑO SE TOMA EN SERIO. NOSOTROS, CON MEDIDA.</p></div>
+  </div></footer>;
 }

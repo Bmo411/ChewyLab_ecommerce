@@ -98,7 +98,13 @@ export function createApp({ env, database, stripe, staticDir = null, logger = co
   }));
   if (staticDir) {
     const manifestFile = resolve(staticDir, 'seo-manifest.json');
-    const publicPaths = existsSync(manifestFile) ? new Set(JSON.parse(readFileSync(manifestFile, 'utf8')).paths) : null;
+    const manifest = existsSync(manifestFile) ? JSON.parse(readFileSync(manifestFile, 'utf8')) : null;
+    const publicPaths = manifest ? new Set(manifest.pagePaths || manifest.paths) : null;
+    const noindexPaths = new Set(manifest?.noindexPaths || []);
+    app.use((req, res, next) => {
+      if (noindexPaths.has(req.path.replace(/\/+$/, ''))) res.set('X-Robots-Tag', 'noindex, nofollow');
+      next();
+    });
     app.get('/robots.txt', (_req, res, next) => {
       if (env.SEARCH_INDEXING_ENABLED !== 'false') return next();
       res.type('text/plain').set('Cache-Control', 'no-cache').send('User-agent: *\nDisallow: /\n');

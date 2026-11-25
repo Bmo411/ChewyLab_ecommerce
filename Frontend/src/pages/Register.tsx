@@ -73,7 +73,7 @@ export default function Register() {
       if (error) throw error;
 
       toast({
-        title: "¡Registro exitoso!",
+        title: "Cuenta registrada",
         description: data.user?.email_confirmed_at
           ? "Tu cuenta ha sido creada. Redirigiendo..."
           : "Por favor revisa tu email para confirmar tu cuenta.",
@@ -137,7 +137,7 @@ export default function Register() {
           <img
             src={logo}
             alt="ChewyLab Logo"
-            className="h-32 w-auto animate-float"
+            className="h-28 w-auto"
           />
         </div>
 
@@ -147,7 +147,7 @@ export default function Register() {
               Crear Cuenta
             </CardTitle>
             <CardDescription className="text-center text-muted-foreground">
-              Ingresa tus datos para registrarte
+              Una cuenta. Varias decisiones de sabor por delante.
             </CardDescription>
           </CardHeader>
           <form onSubmit={handleSubmit}>

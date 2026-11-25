@@ -1,5 +1,6 @@
 import { CheckoutItem } from "@/types/checkout.types";
 import { AlertTriangle, XCircle } from "lucide-react";
+import { formatWeight } from '@/lib/catalog';
 
 interface CheckoutItemRowProps {
     item: CheckoutItem;
@@ -31,7 +32,7 @@ export const CheckoutItemRow = ({ item }: CheckoutItemRowProps) => {
                                 {item.name}
                             </h3>
                             <p className="text-sm font-medium text-muted-foreground mt-0.5">
-                                {item.weight}
+                                {formatWeight(item.weight)}
                             </p>
                         </div>
                         <div className="text-right">

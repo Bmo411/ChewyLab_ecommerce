@@ -25,7 +25,7 @@ if (products.length >= 1000 || categories.length >= 1000) throw new Error('El ca
 const slugs = products.map(p => p.slug);
 if (new Set(slugs).size !== slugs.length || slugs.some(s => typeof s !== 'string' || !/^[a-zA-Z0-9][a-zA-Z0-9_-]*$/.test(s))) throw new Error('Hay slugs duplicados o no válidos para las rutas.');
 const data = { products, categories };
-const { render, resolveSeo, productPath, cleanText } = await import(pathToFileURL(join(root, 'dist-ssr', 'entry-server.js')).href);
+const { render, resolveSeo, productPath, cleanText, publicEditorialPaths, reviewEditorialPaths, editorialPages } = await import(pathToFileURL(join(root, 'dist-ssr', 'entry-server.js')).href);
 const dist = join(root, 'dist');
 const template = await readFile(join(dist, 'index.html'), 'utf8');
 const escape = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -43,9 +43,9 @@ const html = path => {
   ].join('\n');
   return template.replace(/<title>[\s\S]*?<\/title>/, `<title>${escape(seo.title)}</title>`).replace(/\s*<meta name="description"[^>]*>/, '').replace('</head>', `${extra}\n</head>`).replace('<div id="root"></div>', `<div id="root">${render(path, data)}</div>`);
 };
-const publicPaths = ['/', '/coleccion', ...products.map(p=>productPath(p.slug))];
+const publicPaths = ['/', '/coleccion', ...publicEditorialPaths, ...products.map(p=>productPath(p.slug))];
 const privatePaths = ['/login','/register','/checkout','/pedido-exitoso'];
-for (const path of [...publicPaths,...privatePaths]) {
+for (const path of [...publicPaths,...reviewEditorialPaths,...privatePaths]) {
   const folder = path === '/' ? dist : join(dist, path);
   await mkdir(folder,{recursive:true});
   await writeFile(join(folder,'index.html'),html(path));
@@ -56,8 +56,8 @@ await writeFile(join(dist,'spa.html'),html('/__not-found__'));
 await writeFile(join(dist,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${publicPaths.map(p=>`<url><loc>${escape(site + p)}</loc></url>`).join('\n')}\n</urlset>\n`);
 const robots = await readFile(join(root,'public','robots.txt'),'utf8');
 await writeFile(join(dist,'robots.txt'),robots.replaceAll('https://chewylab.blueberrieslab.com',site));
-await writeFile(join(dist,'llms.txt'),`# ChewyLab\n\n> Marca de gomitas y mezclas de sabor. Información pública del catálogo.\n\n## Sitio\n- [Inicio](${site}/)\n- [Colección](${site}/coleccion)\n- [Sitemap](${site}/sitemap.xml)\n\n## Productos\n${products.map(p=>`- [${cleanText(p.name).replaceAll('[','').replaceAll(']','')}](${site}${productPath(p.slug)}): ${cleanText(p.description).slice(0,200)}`).join('\n')}\n\nConsultar cada ficha para presentaciones, precios, ingredientes y disponibilidad actuales. Las condiciones de compra se muestran en la tienda; este archivo no confirma un pedido.\n`);
+await writeFile(join(dist,'llms.txt'),`# Chewy Lab\n\n> Gourmet Gummy Co. Confitería de Guadalajara con diseño sobrio y sátira elegante. Más que una gomita, o eso queremos que creas.\n\n## Sitio\n- [Inicio](${site}/)\n- [Colección](${site}/coleccion)\n${publicEditorialPaths.map(path=>`- [${editorialPages[path].label}](${site}${path})`).join('\n')}\n- [Sitemap](${site}/sitemap.xml)\n\n## Productos\n${products.map(p=>`- [${cleanText(p.name).replaceAll('[','').replaceAll(']','')}](${site}${productPath(p.slug)}): ${cleanText(p.description).slice(0,200)}`).join('\n')}\n\nConsultar cada ficha para presentaciones, precios, ingredientes y disponibilidad actuales. Las líneas editoriales no equivalen a productos disponibles. Las condiciones de compra se muestran en la tienda; este archivo no confirma un pedido.\n`);
 await copyFile(join(root,'src/assets/ChewyLablogoSinFondo.png'),join(dist,'brand-logo.png'));
 await copyFile(join(root,'src/assets/hero.jpg'),join(dist,'social-card.jpg'));
-await writeFile(join(dist,'seo-manifest.json'),JSON.stringify({site,paths:publicPaths,productPaths:products.map(p=>productPath(p.slug))}));
+await writeFile(join(dist,'seo-manifest.json'),JSON.stringify({site,paths:publicPaths,pagePaths:[...publicPaths,...reviewEditorialPaths],noindexPaths:reviewEditorialPaths,productPaths:products.map(p=>productPath(p.slug))}));
 console.log(`[SEO] ${publicPaths.length} páginas públicas y ${privatePaths.length} privadas; sitemap y llms.txt generados con ${products.length} productos.`);

@@ -27,18 +27,18 @@ const Collection = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-24 pb-16">
+      <main id="contenido" className="pt-24 pb-16">
         {/* Hero / Header Section */}
         <section className="container mx-auto px-6 mb-12 text-center">
           <span className="text-gold font-body text-sm uppercase tracking-[0.3em] mb-4 block animate-fade-in">
-            Catálogo Exclusivo
+            GOURMET GUMMY CO. / COLECCIÓN
           </span>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl mb-6 animate-fade-in animation-delay-200">
-            Nuestros <GoldText>Laboratorios</GoldText>
+            Elige tu <GoldText>experimento.</GoldText>
           </h1>
           <p className="text-muted-foreground text-lg font-light max-w-2xl mx-auto animate-fade-in animation-delay-500">
-            Explora nuestra selección de gomitas artesanales, cada una formulada
-            con precisión para una experiencia única.
+            Aquí terminan las metáforas y empiezan los productos. Consulta cada
+            ficha para elegir sabor, presentación e ingredientes con conocimiento de causa.
           </p>
         </section>
 

@@ -51,13 +51,13 @@ test('hosting prerenderizado conserva el HTML por ruta, 404 reales y noindex en 
   const directory = await mkdtemp(join(tmpdir(), 'chewylab-hosting-'));
   let server;
   try {
-    for (const path of ['coleccion','producto/gomitas','checkout']) {
+    for (const path of ['coleccion','producto/gomitas','checkout','privacidad']) {
       await mkdir(join(directory,path),{recursive:true});
       await writeFile(join(directory,path,'index.html'),`<h1>${path}</h1>`);
     }
     await writeFile(join(directory,'index.html'),'<h1>Inicio</h1>');
     await writeFile(join(directory,'404.html'),'<h1>No encontrado</h1>');
-    await writeFile(join(directory,'seo-manifest.json'),JSON.stringify({paths:['/','/coleccion','/producto/gomitas']}));
+    await writeFile(join(directory,'seo-manifest.json'),JSON.stringify({paths:['/','/coleccion','/producto/gomitas'],pagePaths:['/','/coleccion','/producto/gomitas','/privacidad'],noindexPaths:['/privacidad']}));
     const env = { NODE_ENV: 'production', WEB_URL: 'https://chewylab.blueberrieslab.com' };
     server = createApp({env,database:null,stripe:null,staticDir:directory}).listen(0,'127.0.0.1');
     await new Promise(resolve=>server.once('listening',resolve));
@@ -79,6 +79,10 @@ test('hosting prerenderizado conserva el HTML por ruta, 404 reales y noindex en 
     const checkout=await fetch(base+'/checkout');
     assert.equal(checkout.headers.get('x-robots-tag'),'noindex, nofollow');
     assert.equal(checkout.headers.get('cache-control'),'no-store');
+    const review=await fetch(base+'/privacidad');
+    assert.equal(review.status,200);
+    assert.equal(review.headers.get('x-robots-tag'),'noindex, nofollow');
+    assert.equal(await review.text(),'<h1>privacidad</h1>');
     env.SEARCH_INDEXING_ENABLED='false';
     const robots=await fetch(base+'/robots.txt');assert.match(await robots.text(),/Disallow: \//);
     assert.equal((await fetch(base+'/')).headers.get('x-robots-tag'),'noindex, nofollow');

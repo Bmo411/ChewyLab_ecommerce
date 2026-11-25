@@ -12,10 +12,11 @@ export interface CatalogRow {
   product_details: ProductDetails | ProductDetails[] | null;
 }
 export interface CatalogSnapshot { products: CatalogRow[]; categories: Category[]; }
+export function formatWeight(weight: string | number) { const value = String(weight).trim(); return /^\d+(?:\.\d+)?$/.test(value) ? `${value} g` : value; }
 
 export function toProduct(row: CatalogRow): ProductFull {
   return {
-    id: row.id, name: row.name, slug: row.slug, category_name: row.categories?.name || 'Sin categoría', active: row.active,
+    id: row.id, name: row.name, slug: row.slug, category_name: row.categories?.name?.trim() || 'Sin categoría', active: row.active,
     images: [...(row.product_images || [])].sort((a, b) => Number(b.is_main) - Number(a.is_main) || a.position - b.position),
     variants: (row.product_variants || []).filter(v => v.active).map(v => ({ ...v, price: Number(v.price), stock: Number(v.stock) })),
     details: (Array.isArray(row.product_details) ? row.product_details[0] : row.product_details) || { long_description: null, ingredients: null, nutrition_info: null, storage_info: null, usage_info: null },

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,23 +6,23 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 45 20% 95%;
+    --background: 0 0% 7.0588%;
+    --foreground: 36 33.3333% 97.0588%;
 
-    --card: 0 0% 8%;
-    --card-foreground: 45 20% 95%;
+    --card: 60 3.6145% 16.2745%;
+    --card-foreground: 36 33.3333% 97.0588%;
 
     --popover: 0 0% 8%;
     --popover-foreground: 45 20% 95%;
 
-    --primary: 43 74% 49%;
-    --primary-foreground: 0 0% 4%;
+    --primary: 45.8599 64.6091% 52.3529%;
+    --primary-foreground: 0 0% 7.0588%;
 
     --secondary: 0 0% 12%;
     --secondary-foreground: 45 20% 95%;
 
     --muted: 0 0% 15%;
-    --muted-foreground: 45 10% 60%;
+    --muted-foreground: 36 8% 72%;
 
     --accent: 43 74% 49%;
     --accent-foreground: 0 0% 4%;
@@ -37,11 +37,11 @@
     --radius: 0.5rem;
 
     /* Custom luxury tokens */
-    --gold: 43 90% 45%;
+    --gold: 45.8599 64.6091% 52.3529%;
     --gold-light: 40 100% 90%;
     --gold-dark: 43 70% 35%;
-    --cream: 45 20% 95%;
-    --charcoal: 0 0% 8%;
+    --cream: 36 33.3333% 97.0588%;
+    --charcoal: 0 0% 7.0588%;
 
     /* Gradients */
     --gradient-gold: linear-gradient(135deg,
@@ -51,12 +51,12 @@
     --gradient-card: linear-gradient(145deg, hsl(0, 0%, 10%), hsl(0, 0%, 6%));
 
     /* Shadows */
-    --shadow-gold: 0 4px 30px -5px hsl(43 74% 49% / 0.3);
-    --shadow-gold-lg: 0 10px 50px -10px hsl(43 74% 49% / 0.4);
+    --shadow-gold: none;
+    --shadow-gold-lg: none;
     --shadow-elegant: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
 
     /* Typography */
-    --font-display: "Playfair Display", serif;
+    --font-display: "Montserrat", sans-serif;
     --font-body: "Montserrat", sans-serif;
 
     --sidebar-background: 0 0% 98%;
@@ -69,27 +69,7 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 0 0% 4%;
-    --foreground: 45 20% 95%;
-    --card: 0 0% 8%;
-    --card-foreground: 45 20% 95%;
-    --popover: 0 0% 8%;
-    --popover-foreground: 45 20% 95%;
-    --primary: 43 74% 49%;
-    --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 45 20% 95%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 45 10% 60%;
-    --accent: 43 74% 49%;
-    --accent-foreground: 0 0% 4%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 43 30% 25%;
-    --input: 0 0% 15%;
-    --ring: 43 74% 49%;
-  }
+  .dark { color-scheme: dark; }
 }
 
 @layer base {
@@ -108,6 +88,7 @@
   h5,
   h6 {
     @apply font-display;
+    letter-spacing: -0.01em;
   }
 
   /* Hide scrollbar globally */
@@ -125,14 +106,12 @@
 
 @layer utilities {
   .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(43, 74%, 49%), hsl(43, 80%, 65%));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: hsl(var(--gold));
+    -webkit-text-fill-color: currentColor;
   }
 
   .bg-gradient-gold {
-    background: linear-gradient(135deg, hsl(43, 74%, 49%), hsl(43, 80%, 65%));
+    background: hsl(var(--gold));
   }
 
   .shadow-gold {
@@ -350,3 +329,24 @@
       0 0 40px hsl(43, 90%, 65% / 0.5), inset 0 0 20px hsl(43, 90%, 65% / 0.2);
   }
 }
+
+/* Editorial system from the Chewy Lab identity manual. */
+.brand-kicker { font-size: .67rem; line-height: 1.6; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.technical-label { font-family: 'Courier New', monospace; font-size: .72rem; line-height: 1.6; letter-spacing: .04em; }
+.editorial-copy { font-size: .98rem; line-height: 1.8; }
+.editorial-copy p { max-width: 68ch; }
+.editorial-paper { background: #FAF8F5; color: #121212; --gold: 42.9358 63.7427% 33.5294%; --muted-foreground: 60 3% 32%; --foreground: 0 0% 7.0588%; }
+.editorial-link { display: inline-flex; align-items: center; gap: .65rem; font-size: .85rem; font-weight: 600; color: hsl(var(--gold)); text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.editorial-link:hover { text-decoration: underline; }
+.brand-accordion summary { list-style: none; }
+.brand-accordion summary::-webkit-details-marker { display: none; }
+.brand-accordion[open] .accordion-symbol { transform: rotate(45deg); }
+.accordion-symbol { transition: transform .2s ease; }
+.contact-channel { display: flex; align-items: center; gap: 1rem; border: 1px solid hsl(var(--border)); padding: 1.25rem; font-size: .9rem; overflow-wrap: anywhere; }
+.contact-channel:hover { border-color: hsl(var(--gold)); }
+.skip-link { position: fixed; z-index: 100; left: 1rem; top: -5rem; background: #FAF8F5; color: #121212; padding: .8rem 1rem; }
+.skip-link:focus { top: 1rem; }
+.animate-border-glow { animation: none !important; }
+.animate-float-dust { display: none; }
+:focus-visible { outline: 2px solid hsl(var(--gold)); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }

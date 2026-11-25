@@ -30,6 +30,8 @@ Sólo si se desean cambiar estos valores, agregar overrides disponibles durante 
 
 ### Runtime
 
+Los canales de contacto confirmados ya vienen en el código de marca. Para cambiarlos se admiten los argumentos públicos opcionales de build `VITE_CONTACT_EMAIL`, `VITE_CONTACT_WHATSAPP` (internacional, sin signos), `VITE_INSTAGRAM_URL` y `VITE_TIKTOK_URL`. No es necesario configurarlos para conservar el correo y WhatsApp actuales. Las redes sociales permanecen ocultas hasta tener URLs válidas.
+
 | Variable | Valor inicial |
 | --- | --- |
 | `WEB_URL` | `https://chewylab.blueberrieslab.com` |
