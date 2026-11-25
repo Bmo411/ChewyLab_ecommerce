@@ -2,7 +2,9 @@
 
 ## 2026-11-25
 
-- Contenido basado en el manual de identidad del propietario: sátira elegante, Montserrat, paleta oficial, oro plano y datos técnicos en monoespaciada.
+- Aclaración del propietario: el manual orienta el tono satírico. Se restaura la identidad visual dorada original del sitio: degradados, brillos, sombras, fondos oscuros y Playfair Display con Montserrat. La dirección digital actualizada queda en `docs/BRAND.md`.
+- Se conservan la sátira elegante y los datos técnicos en monoespaciada.
+- Restauración visual verificada con build y lint sin errores, 20 pruebas de navegador y 4 de SEO; revisión visual del inicio, manifiesto y contacto a 1440, 390 y 320 px. Se ajusta la posición de las flechas del catálogo para evitar desbordamiento móvil.
 - Diez páginas informativas con navegación y footer: manifiesto, laboratorios, ingredientes, preguntas, envíos, contacto, cookies y tres políticas preliminares.
 - Contacto confirmado: correo y WhatsApp publicados. Sin plazos ni tarifas de envío inventados.
 - Extensión de prerender, metadatos, sitemap y llms; políticas en revisión con HTML propio y noindex. Hosting distingue páginas renderizadas e indexables.

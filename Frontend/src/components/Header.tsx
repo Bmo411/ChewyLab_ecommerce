@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import logo from "../assets/ChewyLablogoSinFondo.png";
 import { useNavigate, Link, NavLink } from "react-router-dom";
 import { navigation, brand } from '@/lib/editorial';
+import { GoldText } from './GoldText';
 import { supabase } from "@/lib/supabase";
 import {
   DropdownMenu,
@@ -50,21 +51,21 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/30">
       <a href="#contenido" className="skip-link">Saltar al contenido</a>
-      <nav aria-label="Navegación principal" className="container mx-auto px-6 flex items-center h-16">
+      <nav aria-label="Navegación principal" className="container mx-auto px-6 flex items-center py-4">
         {/* Left: Logo */}
         <div className="flex-1 flex justify-start">
           <Link to="/" aria-label="Chewy Lab, inicio" className="flex items-center gap-2">
-            <div className="h-10 w-10 flex items-center justify-center overflow-hidden">
+            <div className="h-10 w-10 md:h-14 md:w-14 flex items-center justify-center overflow-hidden">
               <img
                 src={logo}
                 alt=""
-                className="h-24 w-24 max-w-none object-contain"
+                className="h-24 w-24 max-w-none object-contain brightness-125"
               />
             </div>
-            <span className="font-display text-lg sm:text-xl font-bold tracking-[-0.01em]">
-              {brand.name}
+            <span className="font-display text-lg sm:text-2xl md:text-3xl font-semibold tracking-wide whitespace-nowrap">
+              <GoldText>{brand.name}</GoldText>
             </span>
           </Link>
         </div>
@@ -75,7 +76,7 @@ const Header = () => {
         </div>
 
         {/* Right: Cart & Mobile Menu */}
-        <div className="flex-1 flex justify-end items-center gap-4">
+        <div className="flex-1 flex justify-end items-center gap-2 sm:gap-4">
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

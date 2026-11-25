@@ -2,14 +2,18 @@
 
 Revisión: 2026-11-25. Fuente entregada por el propietario: **Chewy Lab - Manual de Identidad de Marca.pdf**, 5 páginas. Se leyó el texto y se revisaron páginas renderizadas del sistema visual. El PDF original no se agrega al repositorio.
 
+## Dirección digital confirmada por el propietario
+
+Esta revisión conserva la estética dorada original del sitio. El propietario aclaró que el manual se entregó para entender la sátira, no para sustituir el diseño existente. Para la web, esta indicación prevalece sobre las restricciones de oro plano, tipografía única y ausencia de brillos del PDF. El PDF original permanece sin modificar; esta guía documenta la actualización de identidad digital.
+
 ## Criterios aplicados
 
 - Voz: sátira elegante. El lenguaje de laboratorio se aplica al antojo sin afirmar beneficios médicos, certificaciones ni propiedades que no estén respaldadas por las fichas.
 - Lema: «Más que una gomita, o eso queremos que creas.»
 - Marca: **Chewy Lab**, descriptor **GOURMET GUMMY CO.**, origen Guadalajara, Jalisco, México. No se anuncia un local abierto al público.
-- Color: Negro Carbón `#121212`, Hueso Laboratorio `#FAF8F5`, Oro Alquimia `#D4AF37`, Oro Técnico `#8C6D1F` y Grafito Pizarra `#2B2B28`. Las páginas editoriales claras usan oro técnico para lectura.
-- Tipografía: Montserrat, con pesos y tracking diferenciados; Courier New para códigos, gramajes y valores nutrimentales. Se retira Playfair Display.
-- Identidad sin animación de brillo, bisel o sombra dorada en el isotipo. Se conserva el asset disponible, sin inventar o modificar los archivos maestros nombrados en el manual.
+- Color digital: se recuperan los valores originales del sitio en `Frontend/src/index.css`, con fondos oscuros y dorado en títulos, botones, bordes y detalles. Se mantienen los degradados de oro, los reflejos animados y las sombras doradas. Las páginas nuevas usan la misma estética oscura y dorada.
+- Tipografía: Playfair Display para títulos y marca, Montserrat para lectura y controles, y Courier New para códigos, gramajes y valores nutrimentales.
+- Efectos digitales: se conservan el brillo en textos dorados, el resplandor en controles y los detalles flotantes de la identidad anterior. Se respeta la preferencia de movimiento reducido del dispositivo. Se utiliza el isotipo disponible sin alterar su geometría ni inventar archivos maestros.
 
 ## Páginas completadas
 

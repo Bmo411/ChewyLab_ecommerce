@@ -37,7 +37,7 @@ const ProductsSection = () => {
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl mb-6">
             El antojo,{" "}
-            <span className="text-foreground">documentado.</span>
+            <span className="text-gradient-gold italic">documentado.</span>
           </h2>
           <p className="text-muted-foreground text-lg font-light">
             Nombres, presentaciones e información de producto. Para que el único misterio sea por qué quieres otra bolsa.
@@ -73,8 +73,8 @@ const ProductsSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="-left-8 md:-left-12" />
+            <CarouselNext className="-right-8 md:-right-12" />
           </Carousel>
         </div>
 

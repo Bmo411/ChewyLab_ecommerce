@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import { GoldText } from './GoldText';
 import { brand, editorialPages } from '@/lib/editorial';
 
 export function EditorialLayout({ path, children, paper = false }: { path: string; children: ReactNode; paper?: boolean }) {
@@ -14,7 +15,7 @@ export function EditorialLayout({ path, children, paper = false }: { path: strin
           <p className="brand-kicker">{brand.descriptor}</p><span className="technical-label">{page.code}</span>
         </div>
         <nav aria-label="Ruta de navegación" className="text-xs text-muted-foreground mb-6"><Link to="/" className="hover:text-foreground">Inicio</Link><span className="mx-3" aria-hidden="true">/</span><span>{page.label}</span></nav>
-        <h1 className="max-w-5xl text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-[-0.04em]">{page.title}</h1>
+        <h1 className="max-w-5xl font-display text-4xl md:text-6xl lg:text-7xl leading-tight"><GoldText>{page.title}</GoldText></h1>
         <p className="mt-7 max-w-2xl text-base md:text-xl leading-relaxed text-muted-foreground">{page.intro}</p>
         {page.review && <p role="note" className="mt-8 max-w-2xl border-l border-gold pl-4 text-sm leading-relaxed text-muted-foreground">Información preliminar. La identidad y domicilio del responsable y las condiciones finales están en revisión antes de habilitar ventas.</p>}
       </section>
@@ -29,5 +30,5 @@ export function EditorialLayout({ path, children, paper = false }: { path: strin
 }
 
 export function CopySection({ number, title, children }: { number: string; title: string; children: ReactNode }) {
-  return <section className="editorial-copy grid md:grid-cols-[80px_1fr] gap-4 md:gap-8 border-t border-current/20 pt-7 pb-10"><span className="technical-label">{number}</span><div><h2 className="text-xl md:text-2xl font-semibold mb-4">{title}</h2><div className="space-y-4 leading-relaxed">{children}</div></div></section>;
+  return <section className="editorial-copy grid md:grid-cols-[80px_1fr] gap-4 md:gap-8 border-t border-gold/20 pt-7 pb-10"><span className="technical-label text-gold">{number}</span><div><h2 className="text-xl md:text-2xl font-semibold text-gold mb-4">{title}</h2><div className="space-y-4 leading-relaxed">{children}</div></div></section>;
 }

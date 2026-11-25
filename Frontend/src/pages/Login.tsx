@@ -129,7 +129,7 @@ export default function Login() {
           <img
             src={logo}
             alt="ChewyLab Logo"
-            className="h-28 w-auto"
+            className="h-32 w-auto animate-float"
           />
         </div>
 

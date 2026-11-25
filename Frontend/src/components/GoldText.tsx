@@ -1,4 +1,35 @@
-import type { ElementType, ReactNode } from 'react';
-interface GoldTextProps { children: ReactNode; className?: string; as?: ElementType; }
-export function GoldText({ children, className = '', as: Component = 'span' }: GoldTextProps) { return <Component className={`text-gold ${className}`}>{children}</Component>; }
-export function GoldTextHover({ children, className = '', as: Component = 'span' }: GoldTextProps) { return <Component className={`transition-colors hover:text-gold ${className}`}>{children}</Component>; }
+import React from "react";
+
+interface GoldTextProps {
+  children: React.ReactNode;
+  className?: string;
+  as?: React.ElementType;
+}
+
+export const GoldText: React.FC<GoldTextProps> = ({
+  children,
+  className = "",
+  as: Component = "span",
+}) => {
+  return (
+    <Component
+      className={`bg-gradient-to-r from-gold via-gold-light to-gold bg-[size:200%_auto] animate-shimmer bg-clip-text text-transparent ${className}`}
+    >
+      {children}
+    </Component>
+  );
+};
+
+export const GoldTextHover: React.FC<GoldTextProps> = ({
+  children,
+  className = "",
+  as: Component = "span",
+}) => {
+  return (
+    <Component
+      className={`transition-all duration-300 hover:bg-gradient-to-r hover:from-gold hover:via-gold-light hover:to-gold hover:animate-shimmer hover:bg-[size:200%_auto] hover:bg-clip-text hover:text-transparent ${className}`}
+    >
+      {children}
+    </Component>
+  );
+};
